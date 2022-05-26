@@ -6,8 +6,6 @@
 
 
 Piece &Board::at(const int x,const  int y) {
-    if(x < 0 or x >= SIZE or y < 0 or y >= SIZE)
-        return Piece(); 
     return Square[x][y];
 }
 
@@ -35,7 +33,7 @@ Board::Board() {
 
 }
 
-std::ostream &operator<<(std::ostream &out, Board &Bo) {
+std::ostream &operator<<(std::ostream &out,const Board &Bo) {
     for(int i = SIZE-1; i >= 0; i--)
     {
         for(int j = 0; j < SIZE; j++)
