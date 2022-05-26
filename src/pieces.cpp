@@ -4,28 +4,28 @@
 
 #include "pieces.hpp"
 
-std::string Pieces::getName() {
+std::string Piece::getName() const {
     return this->Name;
 }
 
-COLOR Pieces::getColor() {
+COLOR Piece::getColor() const {
     return Color;
 }
 
-Pieces::Pieces() : Color(NONE) {}
+Piece::Piece() : Color(NONE) {}
 
-Pieces::Pieces(COLOR x) :Color(x) {}
+Piece::Piece(COLOR x) : Color(x) {}
 
-std::vector<std::pair<int, int>> &Pieces::getMoves() {
+std::vector<std::pair<int, int>> &Piece::getMoves() {
     return Moves;
 }
 
-Man::Man(COLOR x) : Pieces(x)  {
+Man::Man(COLOR x) : Piece(x)  {
     Name = "Man";
     Moves = {{1,-1},{1,1}};
 }
 
-King::King(COLOR x): Pieces(x) {
+King::King(COLOR x): Piece(x) {
     Name = "King";
     for(int i = 1; i <= 8; i++)
     {

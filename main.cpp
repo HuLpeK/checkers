@@ -1,6 +1,6 @@
 #include <iostream>
 #include <vector>
-#include "src/pieces.hpp"
+#include "src/board.hpp"
 /**
  @file main.cpp
  @details Main file used to initialize game.
@@ -10,11 +10,7 @@
 
 int main() {
 
-    King x(WHITE);
-    std::cout << x.getColor() << "\n";
-    auto hlp = x.getMoves();
-    for(auto [f,s]: hlp)
-        std::cout << "{" << f << "," << s << "},";
-    std::cout << "\n" << "♟" << " ";
+    Board x;
+    std::cout << x;
     return 0;
 }

@@ -1,7 +1,8 @@
 /**
  * @file pieces.hpp
  * @details Header that defines figures on our Checkers table.
- * @author Hubert Kulpaczyński 330840
+ * @author Hubert Kulpaczynski\n Indeks:330840
+ * @author Uniwersytet Wrocławki: Instytut Informatyki
  */
 
 #ifndef CHECKERS_PIECES_HPP
@@ -17,7 +18,7 @@ enum COLOR {
 };
 //! Class that provides template for creating Man and King.
 
-class Pieces {
+class Piece {
 protected:
     //! Name of Piece
     std::string Name;
@@ -31,12 +32,12 @@ public:
      * Getter Method
      * @return Name
      */
-    virtual std::string getName() ;
+    virtual std::string getName() const;
     /**
      * Getter Method
      * @return Color of Piece
      */
-    virtual COLOR getColor() ;
+    virtual COLOR getColor() const;
 
     /**
      * Getter Method
@@ -47,16 +48,16 @@ public:
     /**
      * Constructor that sets Color to NONE.
      */
-    Pieces();
+    Piece();
     /**
      * Constructor
      * @param x Color to be set
      */
-    Pieces(COLOR x);
+    Piece(COLOR x);
 };
 
 //! Class of Basic Piece
-class Man : public Pieces
+class Man : public Piece
 {
 public:
     /**
@@ -69,7 +70,7 @@ public:
 };
 
 //! Best piece in Checkers
-class King : public Pieces
+class King : public Piece
 {
 public:
     /**
