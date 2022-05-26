@@ -1,5 +1,6 @@
 
-# Checkers First Page
+# <p align="center"> Checkers First Page </p>
 Checkers game in Cpp!
 
-Test
+Created by Hubert Kulpaczyński!
+
