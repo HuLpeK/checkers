@@ -26,7 +26,7 @@ Board::Board() {
     index = 7;
 
     for(int i = 0; i < SIZE; i += 2)
-        at(i,index) = Man(BLACK), at(i,index-2) = Man(BLACK);
+        at(i, index) = Man(BLACK), at(i,index-2) = Man(BLACK);
     index--;
     for(int i = 1; i < SIZE; i += 2)
         at(i,index) = Man(BLACK);
@@ -37,7 +37,7 @@ std::ostream &operator<<(std::ostream &out,const Board &Bo) {
     for(int i = SIZE-1; i >= 0; i--)
     {
         for(int j = 0; j < SIZE; j++)
-            out << Bo.at(j,i).getName() << "\t";
+            out << Bo.at(j,i).getIcon() << "\t";
         out << "\n";
     }
     return out;

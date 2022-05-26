@@ -22,6 +22,7 @@ class Piece {
 protected:
     //! Name of Piece
     std::string Name;
+    std::string Icon;
     //! Vector of avalible Piece moves
     /*! Implemented as std::vector of std::pairs of X,Y coordinates.*/
     std::vector<std::pair<int,int>> Moves;
@@ -44,6 +45,11 @@ public:
      * @return std::vector Moves;
      */
     virtual std::vector<std::pair<int,int>>& getMoves();
+    /**
+     * Getter method
+     * @return Icon of Piece
+     */
+    virtual std::string getIcon() const;
 
     /**
      * Constructor that sets Color to NONE.

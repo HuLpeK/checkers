@@ -12,7 +12,7 @@ COLOR Piece::getColor() const {
     return Color;
 }
 
-Piece::Piece() : Color(NONE) {}
+Piece::Piece() : Color(NONE)  {}
 
 Piece::Piece(COLOR x) : Color(x) {}
 
@@ -20,9 +20,30 @@ std::vector<std::pair<int, int>> &Piece::getMoves() {
     return Moves;
 }
 
+std::string Piece::getIcon() const {
+    return Icon;
+}
+
 Man::Man(COLOR x) : Piece(x)  {
     Name = "Man";
     Moves = {{1,-1},{1,1}};
+    switch (Color)
+    {
+        case WHITE:
+            Icon = "☗";
+//            Icon = "☖";
+        break;
+        case BLACK:
+            Icon = "☖";
+        break;
+
+        case NONE:
+            Icon = "";
+        break;
+    }
+
+
+
 }
 
 King::King(COLOR x): Piece(x) {
@@ -35,5 +56,20 @@ King::King(COLOR x): Piece(x) {
         Moves.emplace_back(-i,i);
     }
     Moves.shrink_to_fit();
+
+    switch (Color)
+    {
+        case WHITE:
+            Icon = "⛉";
+        break;
+        case BLACK:
+            Icon = "⛊";
+        break;
+
+        case NONE:
+            Icon = "";
+        break;
+
+    }
 
 }
