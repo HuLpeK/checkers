@@ -30,11 +30,11 @@ Man::Man(COLOR x) : Piece(x)  {
     switch (Color)
     {
         case WHITE:
-            Icon = "☗";
+            Icon = "♟";
 //            Icon = "☖";
         break;
         case BLACK:
-            Icon = "☖";
+            Icon = "♙";
         break;
 
         case NONE:
@@ -60,10 +60,10 @@ King::King(COLOR x): Piece(x) {
     switch (Color)
     {
         case WHITE:
-            Icon = "⛉";
+            Icon = "♚";
         break;
         case BLACK:
-            Icon = "⛊";
+            Icon = "♔";
         break;
 
         case NONE:

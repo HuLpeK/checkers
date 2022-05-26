@@ -13,9 +13,9 @@ int main() {
     Board x;
 
     std::cout << x << "\n";
-    system("clr");
+//    system("clr");
     x.at(0,0) = Piece();
-    x.at(0,0) = Man(BLACK);
+    x.at(0,0) = King(BLACK);
     std::cout << x << "\n";
     return 0;
 }

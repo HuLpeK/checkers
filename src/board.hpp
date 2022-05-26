@@ -16,7 +16,7 @@
 #define SIZE 8
 
 class Board {
-    Piece Square[8][8];
+    Piece Square[SIZE][SIZE];
 public:
     /**
      * Getter for Square Table
