@@ -37,7 +37,7 @@ std::ostream &operator<<(std::ostream &out,const Board &Bo) {
     for(int i = SIZE-1; i >= 0; i--)
     {
         for(int j = 0; j < SIZE; j++)
-            out << Bo.at(j,i).getIcon() << "\t";
+            out << Bo.at(j,i).getIcon() << "";
         out << "\n";
     }
     return out;

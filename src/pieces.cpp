@@ -12,7 +12,7 @@ COLOR Piece::getColor() const {
     return Color;
 }
 
-Piece::Piece() : Color(NONE)  {}
+Piece::Piece() : Color(NONE), Icon("□")  {}
 
 Piece::Piece(COLOR x) : Color(x) {}
 
@@ -31,19 +31,19 @@ Man::Man(COLOR x) : Piece(x)  {
     {
         case WHITE:
             Icon = "♟";
-//            Icon = "☖";
         break;
         case BLACK:
             Icon = "♙";
         break;
-
         case NONE:
-            Icon = "";
+            Icon = "□";
         break;
     }
-
-
-
+    if(Color == WHITE)
+    {
+        Moves[0].first *= -1;
+        Moves[1].first *= -1;
+    }
 }
 
 King::King(COLOR x): Piece(x) {
@@ -69,7 +69,5 @@ King::King(COLOR x): Piece(x) {
         case NONE:
             Icon = "";
         break;
-
     }
-
 }

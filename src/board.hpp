@@ -1,15 +1,10 @@
-//
-// Created by Hubert Kulpaczyński on 26/05/2022.
-//
-
-#ifndef CHECKERS_BOARD_HPP
-#define CHECKERS_BOARD_HPP
-
 /**
  * @file board.hpp
- * @author Hubert Kulpaczynski\n Indeks:330840
+ * @author Hubert Kulpaczyński\n Indeks:330840
  * @author Uniwersytet Wrocławki: Instytut Informatyki
  */
+#ifndef CHECKERS_BOARD_HPP
+#define CHECKERS_BOARD_HPP
 
 #include "pieces.hpp"
 #include <iostream>
@@ -24,8 +19,8 @@ public:
      * @param y second axis
      * @return Reference to Piece of Square[x][y]; \todo Check bounds
      */
-    Piece& at(const int x,const  int y);
-    const Piece at(const int x, const int y) const;
+    Piece& at(int x, int y);
+    const Piece at(int x, int y) const;
     /**
      * Constructor for Board
      */
