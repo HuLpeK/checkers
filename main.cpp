@@ -6,7 +6,6 @@
  @author Hubert Kulpaczyński
  */
 
-
 int main() {
     Game x;
 

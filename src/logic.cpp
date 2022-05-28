@@ -4,7 +4,7 @@
 
 #include "logic.hpp"
 
-COLOR Logic::Win(const Board &bo) {
+COLOR Logic::win(const Board &bo) {
     int numberWhite {};
     int numberBlack {};
 
@@ -22,4 +22,18 @@ COLOR Logic::Win(const Board &bo) {
     if(!numberBlack)
         return WHITE;
     return NONE;
+}
+
+bool Logic::legalMove(const Board &bo, std::pair<std::pair<int, int>, std::pair<int, int>>& move, COLOR playerColor) {
+    auto const& [from,to] = move;
+    //Check Color
+    if(bo.at(from.first, from.second).getColor() != playerColor)
+        return false;
+
+    for(const auto& [x,y]: bo.at(from.first,from.second).getMoves())
+        if(from.first + x == to.first and from.second + y == to.second )
+            return true;
+
+    return false;
+
 }

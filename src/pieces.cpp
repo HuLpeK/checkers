@@ -12,11 +12,11 @@ COLOR Piece::getColor() const {
     return Color;
 }
 
-Piece::Piece() : Color(NONE), Icon("□")  {}
+Piece::Piece() : Color(NONE), Icon("□"), Moves()  {}
 
 Piece::Piece(COLOR x) : Color(x) {}
 
-std::vector<std::pair<int, int>> &Piece::getMoves() {
+std::vector<std::pair<int, int>> & Piece::getMoves() const {
     return Moves;
 }
 

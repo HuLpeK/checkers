@@ -45,7 +45,7 @@ public:
      * Getter Method
      * @return std::vector Moves;
      */
-    virtual std::vector<std::pair<int,int>>& getMoves();
+    virtual std::vector<std::pair<int, int>> & getMoves() const;
     /**
      * Getter method
      * @return Icon of Piece
@@ -86,6 +86,6 @@ public:
      * Moves - all diagonals
      * @param x Color to be set of King
      */
-    King(COLOR x);
+    explicit King(COLOR x);
 };
 #endif //CHECKERS_PIECES_HPP
