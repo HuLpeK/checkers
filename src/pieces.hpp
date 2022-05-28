@@ -45,7 +45,7 @@ public:
      * Getter Method
      * @return std::vector Moves;
      */
-    virtual std::vector<std::pair<int, int>> & getMoves() const;
+    virtual std::vector<std::pair<int, int>> getMoves() const;
     /**
      * Getter method
      * @return Icon of Piece

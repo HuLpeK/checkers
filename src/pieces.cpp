@@ -16,7 +16,7 @@ Piece::Piece() : Color(NONE), Icon("□"), Moves()  {}
 
 Piece::Piece(COLOR x) : Color(x) {}
 
-std::vector<std::pair<int, int>> & Piece::getMoves() const {
+std::vector<std::pair<int, int>>  Piece::getMoves() const {
     return Moves;
 }
 
