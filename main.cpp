@@ -1,5 +1,5 @@
 #include <iostream>
-#include "src/board.hpp"
+#include "src/game.hpp"
 /**
  @file main.cpp
  @details Main file used to initialize game.
@@ -8,13 +8,8 @@
 
 
 int main() {
+    Game x;
 
-    Board x;
+    x.Start();
 
-    std::cout << x << "\n";
-//    system("clr");
-    x.at(0,0) = Piece();
-    x.at(0,0) = King(BLACK);
-    std::cout << x << "\n";
-    return 0;
 }

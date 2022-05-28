@@ -7,10 +7,20 @@
 #define CHECKERS_GAME_HPP
 
 #include "board.hpp"
-
+#include "Participant.hpp"
+//! Class that Handles whole game.
 class Game {
-    Board board;
+protected:
+    Board board; ///< Board
+    Player white; ///< White Player.
+    Player black; ///< Black (h3h3) Player.
+public:
+    /**
+     * game Starter;
+     */
+    void Start();
 
+    Game();
 };
 
 

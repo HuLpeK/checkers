@@ -10,7 +10,7 @@
 #include <__utility/pair.h>
 #include "board.hpp"
 //! Virtual template class.
-class participant {
+class Participant {
 protected:
     /**
      * Color of player.
@@ -18,10 +18,10 @@ protected:
     COLOR playerColor;
 public:
     /**
-     * Constructor of participant
-     * @param x - Color of participant.
+     * Constructor of Participant
+     * @param x - Color of Participant.
      */
-    explicit participant(COLOR x);
+    explicit Participant(COLOR x);
     /**
      * Getter method.
      * @return Players color.
@@ -37,7 +37,7 @@ public:
 };
 
 //! Player (User)
-class Player : public participant
+class Player : public Participant
 {
     /**
      * Changes char from range: [A-Za-z] to A-Z
@@ -54,6 +54,13 @@ public:
     * @return Pair of defined move {X,Y} -> {X,Y}.
     */
     std::pair<std::pair<int,int>,std::pair<int,int>> makeMove(const Board& bo);
+
+    /**
+     * Constructor for Player using Participant constructor.
+     * @param x Color of player.
+     */
+    explicit Player(COLOR x);
+
 };
 
 #endif //CHECKERS_PARTICIPANT_HPP

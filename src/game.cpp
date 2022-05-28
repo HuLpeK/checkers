@@ -3,3 +3,10 @@
 //
 
 #include "game.hpp"
+
+void Game::Start() {
+
+
+}
+
+Game::Game() : white(WHITE), black(BLACK), board() {}

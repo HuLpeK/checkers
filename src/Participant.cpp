@@ -2,12 +2,12 @@
 // Created by Hubert Kulpaczyński on 28/05/2022.
 //
 
-#include "participant.hpp"
+#include "Participant.hpp"
 
-participant::participant(COLOR x) : playerColor(x) {
+Participant::Participant(COLOR x) : playerColor(x) {
 }
 
-COLOR participant::getColor() {
+COLOR Participant::getColor() {
     return playerColor;
 }
 
@@ -15,19 +15,20 @@ std::pair<std::pair<int, int>, std::pair<int, int>> Player::makeMove(const Board
     std::cout << "Podaj Współrzedne ruchu!: ";
     char xStart {};
     int yStart {};
-    std::cin >> xStart >> yStart;
-
     char xEnd {};
     int yEnd {};
-    std::cin >> xEnd >> yEnd;
+    std::cin >> xStart >> yStart >> xEnd >> yEnd;
 
     xStart = toUpperCase(xStart);
     xEnd = toUpperCase(xEnd);
+    if(xStart == '~' or xEnd == '~' ) //Error
+        std::cerr << "BLAD!\n";
 
     int x = xStart-'A';
     int x1 = xEnd - 'A';
-
-    return {{x, yStart}, {x1,xEnd}};
+    yStart--;
+    yEnd--;
+    return {{x, yStart}, {x1,yEnd}};
 }
 
 char Player::toUpperCase( char C) {
@@ -38,5 +39,7 @@ char Player::toUpperCase( char C) {
     return '~';
 
 }
+
+Player::Player(COLOR x) : Participant(x) {}
 
 

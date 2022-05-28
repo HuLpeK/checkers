@@ -12,9 +12,10 @@
 #include <vector>
 /// enum for having own Color types
 enum COLOR {
+        NONE, ///< Blank
         WHITE, ///< White Piece
-        BLACK, ///< Black Piece
-        NONE ///< Blank
+        BLACK ///< Black Piece
+
 };
 //! Class that provides template for creating Man and King.
 
