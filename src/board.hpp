@@ -9,7 +9,7 @@
 #include "pieces.hpp"
 #include <iostream>
 #define SIZE 8
-
+//! Checkers Board
 class Board {
     Piece Square[SIZE][SIZE];
 public:

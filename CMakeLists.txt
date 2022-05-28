@@ -3,7 +3,7 @@ project(checkers)
 
 set(CMAKE_CXX_STANDARD 20)
 
-add_executable(checkers main.cpp src/pieces.cpp src/pieces.hpp src/board.cpp src/board.hpp src/game.cpp src/game.hpp)
+add_executable(checkers main.cpp src/pieces.cpp src/pieces.hpp src/board.cpp src/board.hpp src/game.cpp src/game.hpp src/participant.cpp src/participant.hpp)
 
 #Doxy Gen
 option(BUILD_DOC "Build documentation" ON)

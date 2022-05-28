@@ -1,5 +1,4 @@
 #include <iostream>
-#include <vector>
 #include "src/board.hpp"
 /**
  @file main.cpp
