@@ -4,7 +4,7 @@
  * @author Hubert Kulpaczynski\n Indeks:330840
  * @author Uniwersytet Wrocławki: Instytut Informatyki
  */
-
+//todo names to convetion
 #ifndef CHECKERS_PIECES_HPP
 #define CHECKERS_PIECES_HPP
 

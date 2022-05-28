@@ -12,8 +12,17 @@
 class Game {
 protected:
     Board board; ///< Board
-    Player white; ///< White Player.
-    Player black; ///< Black (h3h3) Player.
+    Player white; ///< White player.
+    Player black; ///< Black player.
+
+    /**
+     * Perform actual move.
+     * @param move - Description of move.
+     * @param actualColor - Actual player color.
+     * @invariant - Move is legal.
+     * @return true if it's bicie has been done.
+     */
+    bool makeMove(std::pair<std::pair<int,int>, std::pair<int,int>> move, COLOR actualColor);
 public:
     /**
      * game Starter;

@@ -12,7 +12,7 @@ COLOR Participant::getColor() {
 }
 
 std::pair<std::pair<int, int>, std::pair<int, int>> Player::makeMove(const Board &bo) {
-    std::cout << "Podaj Współrzedne ruchu!: ";
+    std::cout << "Ruch:" << (playerColor == WHITE ? "BIAŁYCH" : "CZARNYCH") << "\nPodaj Współrzedne ruchu!: ";
     char xStart {};
     int yStart {};
     char xEnd {};
