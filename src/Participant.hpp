@@ -56,6 +56,14 @@ public:
     std::pair<std::pair<int,int>,std::pair<int,int>> makeMove(const Board& bo);
 
     /**
+    * Virtual method that defines Piece move\n
+    * @invariant Bounds and legality of move is not checked here.
+    * @param bo - Board of used Checkers game.
+    * @param oldMove - Old move from which you start new one.
+    * @return Pair of defined move {X,Y} -> {X,Y}.
+    */
+    std::pair<std::pair<int,int>,std::pair<int,int>> makeMove(const Board& bo, std::pair<std::pair<int, int>, std::pair<int, int>> oldMove);
+    /**
      * Constructor for Player using Participant constructor.
      * @param x Color of player.
      */

@@ -34,7 +34,10 @@ void Game::Start() {
         }
         else while(Logic::possibleBicie(board,actualColor, mv.second).first != -1) // performed bicie but one more is possible
         {
-
+            if(actualColor == WHITE)
+                mv = white.makeMove(board,mv);
+            if(actualColor == BLACK)
+                mv = black.makeMove(board,mv);
         }
 
 
