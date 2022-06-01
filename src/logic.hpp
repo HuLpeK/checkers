@@ -32,6 +32,15 @@ namespace Logic
       * @return False - not legal.
       */
      bool legalMove(const Board& bo, std::pair<std::pair<int,int>,std::pair<int,int>>& move, COLOR playerColor);
+
+     /**
+      * Check if bicie is able to be performed
+      * @param bo - Board of game.
+      * @param playerColor - Color of player that moves.
+      * @return {-1,-1} of bicie is not possible.
+      * @return Position of available bicie in any other case.
+      */
+     std::pair<int,int> possibleBicie(const Board& bo, COLOR playerColor);
 }
 
 #endif //CHECKERS_LOGIC_HPP

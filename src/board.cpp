@@ -10,6 +10,8 @@ Piece &Board::at(const int x,const  int y) {
 }
 
 const Piece Board::at(const int x, const int y) const {
+    if(x < 0 or y < 0 or x >= SIZE or y >= SIZE)
+        return Piece();
     return Square[x][y];
 }
 

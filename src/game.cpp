@@ -7,26 +7,33 @@
 void Game::Start() {
     COLOR actualColor = WHITE;
     board.at(1,3) = Man(BLACK);
-    while(!Logic::win(board)){
+    while(!Logic::win(board)) {
 
         std::cout << board;
 
-        std::pair<std::pair<int,int>,std::pair<int,int>> mv {};
+        std::pair<std::pair<int, int>, std::pair<int, int>> mv{};
 
-        if(actualColor == WHITE)
+        if (actualColor == WHITE)
             mv = white.makeMove(board);
         else
             mv = black.makeMove(board);
 
-        while(!Logic::legalMove(board, mv, actualColor))
-        {
+        while (!Logic::legalMove(board, mv, actualColor)) {
             std::cout << "BLAD!\n";
-            if(actualColor == WHITE)
+            if (actualColor == WHITE)
                 mv = white.makeMove(board);
             else
                 mv = black.makeMove(board);
         }
-        makeMove(mv, actualColor);
+//        const auto [fromX, fromY] = Logic::possibleBicie(board, actualColor);
+        const int fromX = Logic::possibleBicie(board,actualColor).first;
+        const int fromY = Logic::possibleBicie(board,actualColor).second;
+        if (!makeMove(mv, actualColor) and fromX != -1) // if bicie hasn't been done check if possibleBicie was possibleBicie
+        {
+            std::cout << "Za niebicie tracisz zycie!\n";
+            board.at(fromX,fromY) = Piece();
+        }
+
 
 
         if(actualColor == WHITE)

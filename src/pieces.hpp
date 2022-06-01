@@ -17,8 +17,8 @@ enum COLOR {
         BLACK ///< Black Piece
 
 };
-//! Class that provides template for creating Man and King.
 
+//! Class that provides template for creating Man and King.
 class Piece {
 protected:
     //! Name of Piece
