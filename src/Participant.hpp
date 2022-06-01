@@ -45,7 +45,7 @@ class Player : public Participant
      * @return - char from range A-Z
      * @return - if C is not from range [A-za-z] return '~'.
      */
-    char toUpperCase(char C);
+    static char toUpperCase(char C);
 public:
     /**
     * Virtual method that defines Piece move\n

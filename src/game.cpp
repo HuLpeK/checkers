@@ -57,7 +57,7 @@ bool Game::makeMove(std::pair<std::pair<int, int>, std::pair<int, int>> move, CO
     std::pair<int,int> distMove {to.first - from.first, to.second -from.second};
     std::pair<int,int> smallMove  {(distMove.first > 0 ? 1 : -1),(distMove.second > 0 ? 1 : -1)};
 
-    for(auto i = from; i.first < to.first and i.second < to.second; i.first += smallMove.first, i.second += smallMove.second)
+    for(auto i = from; i.first != to.first and i.second != to.second; i.first += smallMove.first, i.second += smallMove.second)
     {
         if(board.at(i.first,i.second).getColor() != NONE)
             flag = true;

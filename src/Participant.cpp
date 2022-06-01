@@ -4,8 +4,7 @@
 
 #include "Participant.hpp"
 
-Participant::Participant(COLOR x) : playerColor(x) {
-}
+Participant::Participant(COLOR x) : playerColor(x) {}
 
 COLOR Participant::getColor() {
     return playerColor;
@@ -31,7 +30,7 @@ std::pair<std::pair<int, int>, std::pair<int, int>> Player::makeMove(const Board
     return {{x, yStart}, {x1,yEnd}};
 }
 
-char Player::toUpperCase( char C) {
+char Player::toUpperCase(char C) {
     if(C >= 'A' and C <= 'Z')
         return C;
     if(C >= 'a' and C <= 'z')

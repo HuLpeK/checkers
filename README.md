@@ -1,6 +1,5 @@
-
-# <p align="center"> Checkers First Page </p>
-Checkers game in Cpp!
+# <p align="center"> Checkers </p>
+Checkers game made in cpp.\
+Created as project at *University of Wrocław: Institute of Informatics* for Object-Oriented Programing.
 
 Created by Hubert Kulpaczyński!
-

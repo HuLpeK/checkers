@@ -19,8 +19,8 @@ protected:
      * Perform actual move.
      * @param move - Description of move.
      * @param actualColor - Actual player color.
-     * @invariant - Move is legal.
-     * @return true if it's bicie has been done.
+     * @invariant Move is legal.
+     * @return True - if it's bicie has been done.
      */
     bool makeMove(std::pair<std::pair<int,int>, std::pair<int,int>> move, COLOR actualColor);
 public:
