@@ -44,13 +44,14 @@ Player::Player(COLOR x) : Participant(x) {}
 std::pair<std::pair<int, int>, std::pair<int, int>> Player::makeMove(const Board &bo, std::pair<std::pair<int, int>, std::pair<int, int>> oldMove) {
     const auto [fromOld, toOld] = oldMove;
     std::cout << "Ruch:" << (playerColor == WHITE ? "BIAŁYCH" : "CZARNYCH") << "\nPodaj Współrzedne ruchu!: "
-        << fromOld.first << fromOld.second << " -> ";
+        << (char)('A' + toOld.first) << toOld.second+1 << " -> ";
     char xEnd {};
     int yEnd {};
     std::cin >>  xEnd >> yEnd;
     xEnd = toUpperCase(xEnd);
     if(xEnd == '~' ) //Error
         std::cerr << "BLAD!\n";
+    xEnd -= 'A';
     yEnd--;
     return {toOld,{xEnd,yEnd}};
 }

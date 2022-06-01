@@ -7,6 +7,7 @@
 void Game::Start() {
     COLOR actualColor = WHITE;
     board.at(1,3) = Man(BLACK);
+    board.at(4,6) = Piece();
     while(!Logic::win(board)) {
 
         std::cout << board;
@@ -32,12 +33,33 @@ void Game::Start() {
             std::cout << "Za niebicie tracisz zycie!\n";
             board.at(fromX,fromY) = Piece();
         }
-        else while(Logic::possibleBicie(board,actualColor, mv.second).first != -1) // performed bicie but one more is possible
+        else while(Logic::possibleBicie(board,actualColor, mv.second)) // performed bicie but one more is possible
         {
+            std::cout << board;
             if(actualColor == WHITE)
-                mv = white.makeMove(board,mv);
+            {
+                std::pair<std::pair<int,int>,std::pair<int,int>> tmp {{-1,-1},{-1,-1}};
+                tmp = white.makeMove(board,mv);
+
+                while(!Logic::legalMove(board,tmp,WHITE))
+                {
+                    std::cout << "BLAD2!\n";
+                    tmp = white.makeMove(board,mv);
+                }
+                mv = tmp;
+            }
             if(actualColor == BLACK)
-                mv = black.makeMove(board,mv);
+            {
+                std::pair<std::pair<int,int>,std::pair<int,int>> tmp {{-1,-1},{-1,-1}};
+                tmp = white.makeMove(board,mv);
+                while(!Logic::legalMove(board,tmp,BLACK))
+                {
+                    std::cout << "BLAD2!\n";
+                    tmp = white.makeMove(board,mv);
+                }
+                mv = tmp;
+            }
+            makeMove(mv,actualColor);
         }
 
 

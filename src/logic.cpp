@@ -59,30 +59,46 @@ bool Logic::legalMove(const Board &bo, std::pair<std::pair<int, int>, std::pair<
     return false;
 }
 
-std::pair<int,int> Logic::possibleBicie(const Board &bo, COLOR playerColor, std::pair<int,int> starter) {
+bool Logic::possibleBicie(const Board &bo, COLOR playerColor, std::pair<int,int> starter) {
     COLOR oppositeColor = (playerColor == WHITE ? WHITE : BLACK);
-    if(starter.first == -1)
-        for(starter.first = 0; starter.first < SIZE; starter.first++)
-            for(starter.second = 0; starter.second < SIZE; starter.second++)
-                if(bo.at(starter.first,starter.second).getColor() == playerColor)
-                    for(const auto& [x, y]: bo.at(starter.first,starter.second).getMoves())
-                    {
-                        std::pair<int,int> smallMove  {(x > 0 ? 1 : -1),(y > 0 ? 1 : -1)};
-                        if(bo.at(starter.first+x,starter.first+y).getColor() == oppositeColor
-                            and bo.at(starter.first+smallMove.first * 2,starter.second+smallMove.second*2).getColor() == NONE)
-                                return {starter.first,starter.second};
-                    }
-    else
-        if(bo.at(starter.first,starter.second).getColor() == playerColor)
-            for(const auto& [x, y]: bo.at(starter.first,starter.second).getMoves())
+//    if(starter.first == -1)
+//        for(starter.first = 0; starter.first < SIZE; starter.first++)
+//            for(starter.second = 0; starter.second < SIZE; starter.second++)
+//                if(bo.at(starter.first,starter.second).getColor() == playerColor)
+//                    for(const auto& [x, y]: bo.at(starter.first,starter.second).getMoves())
+//                    {
+//                        std::pair<int,int> smallMove  {(x > 0 ? 1 : -1),(y > 0 ? 1 : -1)};
+//                        if(bo.at(starter.first+x,starter.first+y).getColor() == oppositeColor
+//                            and bo.at(starter.first+smallMove.first * 2,starter.second+smallMove.second*2).getColor() == NONE)
+//                                return {starter.first,starter.second};
+//                    }
+//    else
+//        if(bo.at(starter.first,starter.second).getColor() == playerColor)
+//            for(const auto& [x, y]: bo.at(starter.first,starter.second).getMoves())
+//            {
+//                std::pair<int,int> smallMove  {(x > 0 ? 1 : -1),(y > 0 ? 1 : -1)};
+//                if(bo.at(starter.first+x,starter.first+y).getColor() == oppositeColor
+//                   and bo.at(starter.first+smallMove.first * 2,starter.second+smallMove.second*2).getColor() == NONE)
+//                    return {starter.first,starter.second};
+//            }
+
+    if(bo.at(starter.first,starter.second).getColor() == playerColor)
+        for(const auto& [x, y]: bo.at(starter.first,starter.second).getMoves())
             {
                 std::pair<int,int> smallMove  {(x > 0 ? 1 : -1),(y > 0 ? 1 : -1)};
                 if(bo.at(starter.first+x,starter.first+y).getColor() == oppositeColor
                    and bo.at(starter.first+smallMove.first * 2,starter.second+smallMove.second*2).getColor() == NONE)
-                    return {starter.first,starter.second};
+                    return true;
             }
 
-        
+    return false;
+}
+
+std::pair<int, int> Logic::possibleBicie(const Board &bo, COLOR playerColor) {
+    for(int i = 0; i < SIZE; i++)
+        for(int j = 0; j < SIZE; j++)
+            if(possibleBicie(bo,playerColor,{i,j}))
+                return {i,j};
 
     return {-1,-1};
 }
