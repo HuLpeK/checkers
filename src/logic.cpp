@@ -26,7 +26,7 @@ COLOR Logic::win(const Board &bo) {
 
 bool Logic::legalMove(const Board &bo, std::pair<std::pair<int, int>, std::pair<int, int>>& move, COLOR playerColor) {
     auto const& [from,to] = move;
-    //check bounds
+    //Check bounds
     if(from.first < 0 or from.second < 0 or from.first >= SIZE or from.second >= SIZE)
         return false;
     //Check Color
