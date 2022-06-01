@@ -36,6 +36,7 @@ Board::Board() {
 }
 
 std::ostream &operator<<(std::ostream &out,const Board &Bo) {
+    system("clear"); //todo change to smth more inteligent
 
     std::string tab[SIZE+3][SIZE+3];
     for(int i = 0; i <= SIZE; i++)
