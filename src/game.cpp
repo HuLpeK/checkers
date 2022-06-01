@@ -25,13 +25,16 @@ void Game::Start() {
             else
                 mv = black.makeMove(board);
         }
-//        const auto [fromX, fromY] = Logic::possibleBicie(board, actualColor);
-        const int fromX = Logic::possibleBicie(board,actualColor).first;
-        const int fromY = Logic::possibleBicie(board,actualColor).second;
+        const auto [fromX, fromY] = Logic::possibleBicie(board, actualColor);
+
         if (!makeMove(mv, actualColor) and fromX != -1) // if bicie hasn't been done check if possibleBicie was possibleBicie
         {
             std::cout << "Za niebicie tracisz zycie!\n";
             board.at(fromX,fromY) = Piece();
+        }
+        else while(Logic::possibleBicie(board,actualColor, mv.second).first != -1) // performed bicie but one more is possible
+        {
+
         }
 
 

@@ -59,18 +59,30 @@ bool Logic::legalMove(const Board &bo, std::pair<std::pair<int, int>, std::pair<
     return false;
 }
 
-std::pair<int,int> Logic::possibleBicie(const Board &bo, COLOR playerColor) {
+std::pair<int,int> Logic::possibleBicie(const Board &bo, COLOR playerColor, std::pair<int,int> starter) {
     COLOR oppositeColor = (playerColor == WHITE ? WHITE : BLACK);
-    for(int i = 0; i < SIZE; i++)
-        for(int j = 0; j < SIZE; j++)
-            if(bo.at(i,j).getColor() == playerColor)
-                for(const auto& [x, y]: bo.at(i,j).getMoves())
-                {
-                    std::pair<int,int> smallMove  {(x > 0 ? 1 : -1),(y > 0 ? 1 : -1)};
-                    if(bo.at(i+x,i+y).getColor() == oppositeColor
-                        and bo.at(i+smallMove.first * 2,j+smallMove.second*2).getColor() == NONE)
-                            return {i,j};
-                }
+    if(starter.first == -1)
+        for(starter.first = 0; starter.first < SIZE; starter.first++)
+            for(starter.second = 0; starter.second < SIZE; starter.second++)
+                if(bo.at(starter.first,starter.second).getColor() == playerColor)
+                    for(const auto& [x, y]: bo.at(starter.first,starter.second).getMoves())
+                    {
+                        std::pair<int,int> smallMove  {(x > 0 ? 1 : -1),(y > 0 ? 1 : -1)};
+                        if(bo.at(starter.first+x,starter.first+y).getColor() == oppositeColor
+                            and bo.at(starter.first+smallMove.first * 2,starter.second+smallMove.second*2).getColor() == NONE)
+                                return {starter.first,starter.second};
+                    }
+    else
+        if(bo.at(starter.first,starter.second).getColor() == playerColor)
+            for(const auto& [x, y]: bo.at(starter.first,starter.second).getMoves())
+            {
+                std::pair<int,int> smallMove  {(x > 0 ? 1 : -1),(y > 0 ? 1 : -1)};
+                if(bo.at(starter.first+x,starter.first+y).getColor() == oppositeColor
+                   and bo.at(starter.first+smallMove.first * 2,starter.second+smallMove.second*2).getColor() == NONE)
+                    return {starter.first,starter.second};
+            }
+
+        
 
     return {-1,-1};
 }
