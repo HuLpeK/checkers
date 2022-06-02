@@ -76,7 +76,7 @@ public:
      Man(COLOR x);
 };
 
-//! Best piece in Checkers
+//! Class of Best Piece in checkers
 class King : public Piece
 {
 public:
