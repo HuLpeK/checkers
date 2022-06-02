@@ -6,8 +6,8 @@
 #include "logic.hpp"
 void Game::Start() {
     COLOR actualColor = WHITE;
-    board.at(1,3) = Man(BLACK);
-    board.at(4,6) = Piece();
+//    board.at(1,3) = Man(BLACK);
+//    board.at(4,6) = Piece();H
     while(!Logic::win(board)) {
 
         std::cout << board;
