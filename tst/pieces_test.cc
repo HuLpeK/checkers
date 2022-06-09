@@ -109,7 +109,7 @@ TEST_F(PiecesTest, Check_Black_King_Moves_Should_Return_Left_And_Right_Diagonal)
             {"","X","","X",""},
             {"X","","","","X"},
     };
-    const int midX {3}, midY {3};
+    const int midX {2}, midY {2};
 
     std::string tab[5][5];
     tab[midX][midY] = 'O';
@@ -136,13 +136,14 @@ TEST_F(PiecesTest, Check_White_King_Moves_Should_Return_Left_And_Right_Diagonal)
             {"","X","","X",""},
             {"X","","","","X"},
     };
-    const int midX {3}, midY {3};
+    const int midX {2}, midY {2};
 
     std::string tab[5][5];
     tab[midX][midY] = 'O';
     for(const auto& [x,y]: Tmp.getMoves())
         if(midX+x < 5 and midY + y < 5)
             tab[midX+x][midY+y] = 'X';
+
 
     for(int i = 0;i < 5; i++)
         for(int j = 0; j < 5; j++)
