@@ -28,3 +28,27 @@ if (DOXYGEN_FOUND)
 else (DOXYGEN_FOUND)
     message("Doxygen need to be installed to generate the doxygen documentation")
 endif (DOXYGEN_FOUND)
+
+
+
+include(FetchContent)
+FetchContent_Declare(
+        googletest
+        GIT_REPOSITORY https://github.com/google/googletest.git
+        GIT_TAG main
+)
+
+FetchContent_MakeAvailable(googletest)
+
+enable_testing()
+
+add_executable(
+        checkers_test
+        tst/board_test.cc)
+
+target_link_libraries(
+        checkers_test
+        gtest_main
+)
+include(GoogleTest)
+gtest_discover_tests(checkers_test)
