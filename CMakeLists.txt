@@ -45,7 +45,7 @@ enable_testing()
 
 add_executable(
         checkers_test
-        tst/board_test.cc)
+        tst/board_test.cc tst/pieces_test.cc tst/Participant_test.cc)
 
 target_link_libraries(
         checkers_test
@@ -55,4 +55,8 @@ target_link_libraries(
         implement
 )
 include(GoogleTest)
-gtest_discover_tests(checkers_test)
+gtest_discover_tests(checkers_test implement)
+#add_test(
+#        NAME checkers_test
+#        COMMAND checkers_test
+#)
