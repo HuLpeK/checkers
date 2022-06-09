@@ -5,6 +5,7 @@ set(CMAKE_CXX_STANDARD 20)
 
 add_executable(checkers main.cpp src/pieces.cpp src/pieces.hpp src/board.cpp src/board.hpp src/game.cpp src/game.hpp src/Participant.cpp src/Participant.hpp src/logic.cpp src/logic.hpp)
 
+add_library(implement src/pieces.cpp src/pieces.hpp src/board.cpp src/board.hpp src/game.cpp src/game.hpp src/Participant.cpp src/Participant.hpp src/logic.cpp src/logic.hpp)
 #Doxy Gen
 option(BUILD_DOC "Build documentation" ON)
 
@@ -49,6 +50,9 @@ add_executable(
 target_link_libraries(
         checkers_test
         gtest_main
+        gtest
+        gmock
+        implement
 )
 include(GoogleTest)
 gtest_discover_tests(checkers_test)

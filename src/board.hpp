@@ -8,6 +8,9 @@
 
 #include "pieces.hpp"
 #include <iostream>
+/**
+ * Size of the board
+ */
 #define SIZE 8
 //! Checkers Board
 class Board {
@@ -21,6 +24,13 @@ public:
      * @return if asking out of bounds return Piece.
      */
     Piece& at(int x, int y);
+    /**
+     * Getter for Square Table
+     * @param x first axis
+     * @param y second axis
+     * @return Reference to Piece of Square[x][y].
+     * @return if asking out of bounds return Piece.
+     */
     const Piece at(int x, int y) const;
     /**
      * Constructor for Board
