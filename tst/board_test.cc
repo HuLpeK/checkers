@@ -1,6 +1,7 @@
-///***
-// * \file board_test.cc
-// */
+/***
+ * \file board_test.cc
+ * @author Hubert Kulpaczyński
+ */
 #include <gtest/gtest.h>
 #include "gmock/gmock.h"
 #include "../src/board.hpp"
