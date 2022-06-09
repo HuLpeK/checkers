@@ -52,6 +52,7 @@ bool Logic::legalMove(const Board &bo, std::pair<std::pair<int, int>, std::pair<
     else
         opositeColor = WHITE;
     //Check bicie
+
     for(const auto& [x,y]: bo.at(from.first,from.second).getMoves())
         if(from.first + 2*x == to.first and from.second + 2*y == to.second and bo.at(to.first, to.second).getColor() == NONE
         and bo.at(from.first+x,from.second+y).getColor() == opositeColor)
