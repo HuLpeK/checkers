@@ -6,32 +6,26 @@
 
 
 Piece &Board::at(const int x,const  int y) {
-    return Square[x][y];
+    return Square[7-y][x];
 }
 
-const Piece Board::at(const int x, const int y) const {
-    if(x < 0 or y < 0 or x >= SIZE or y >= SIZE)
-        return Piece();
-    return Square[x][y];
+Piece Board::at(const int x, const int y) const {
+    if (x < 0 or y < 0 or x >= SIZE or y >= SIZE)
+        return {};
+    return Square[7-y][x];
 }
 
 
 Board::Board() {
 
     int index = 0;
-    for(int i = 0; i < SIZE; i += 2)
-        at(i,index) = Man(BLACK), at(i,index+2) = Man(BLACK);
-    index++;
-    for(int i = 1; i < SIZE; i += 2)
-        at(i,index) = Man(BLACK);
-
-    index = 7;
-
-    for(int i = 1; i < SIZE; i += 2)
-        at(i, index) = Man(WHITE), at(i,index-2) = Man(WHITE);
-    index--;
-    for(int i = 0; i < SIZE; i += 2)
-        at(i,index) = Man(WHITE);
+    for(int i = 0; i < SIZE; i++)
+        for(int j = 0; j < SIZE; j++)
+            if((i+j) % 2 == 1)
+                if(j <= 2)
+                    at(i,j) = Man(WHITE);
+                else if(j >= 5)
+                    at(i,j) = Man(BLACK);
 
 }
 
@@ -48,7 +42,10 @@ std::ostream &operator<<(std::ostream &out,const Board &Bo) {
     for(int i = 0; i < SIZE ; i++)
     {
         for(int j = 0; j < SIZE; j++)
-            tab[i][j+1] = Bo.at(j,i).getIcon();
+            tab[7-j][i+1] = Bo.at(i,j).getIcon();
+//        at{0,0} -> {7,1}
+//        at{7,7} -> {0,8} // at{i,j} -> {7-j,i+1}
+//        at{0,7} -> {0,1}
     }
 
     for(int i = 0; i <= SIZE ; i++)
@@ -60,8 +57,5 @@ std::ostream &operator<<(std::ostream &out,const Board &Bo) {
 
     return out;
 }
-
-
-
 
 

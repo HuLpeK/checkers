@@ -31,7 +31,7 @@ public:
      * @return Reference to Piece of Square[x][y].
      * @return if asking out of bounds return Piece.
      */
-    const Piece at(int x, int y) const;
+    Piece at(int x, int y) const;
     /**
      * Constructor for Board
      */
