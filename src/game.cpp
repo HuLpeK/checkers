@@ -6,8 +6,6 @@
 #include "logic.hpp"
 void Game::Start() {
     COLOR actualColor = WHITE;
-//    board.at(1,3) = Man(BLACK);
-//    board.at(4,6) = Piece();H
     while(!Logic::win(board)) {
 
         std::cout << board;
@@ -77,7 +75,7 @@ bool Game::makeMove(std::pair<std::pair<int, int>, std::pair<int, int>> move, CO
     auto [from,to] = move;
     board.at(from.first,from.second) = Piece();
 
-    if(actualColor == WHITE and to.first == SIZE-1)
+    if(actualColor == WHITE and to.second == SIZE-1)
         board.at(to.first,to.second) = King(WHITE);
     if(actualColor == BLACK and to.first == 0)
         board.at(to.first,to.second) = King(BLACK);

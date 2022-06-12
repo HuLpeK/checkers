@@ -32,7 +32,7 @@ TEST_F(BoardTest, Check_If_Board_Is_Correctly_Build) {
     Piece expectedBoard[8][8];
     for (int i = 0; i < SIZE; i++) {
         for(int j = 0; j < SIZE; j++)
-            if((i+j)%2 == 1)
+            if((i+j)%2 == 0)
                 if(j >= 5)
                     expectedBoard[i][j] = Man(BLACK);
                 else
@@ -40,18 +40,18 @@ TEST_F(BoardTest, Check_If_Board_Is_Correctly_Build) {
                         expectedBoard[i][j] = Man(WHITE);
     }
 
-    for (int i = 0; i < SIZE; i++) {
-        for (int j = 0; j < 8; j++)
-            std::cout << expectedBoard[i][j].getIcon();
-        std::cout << "\n";
-    }
-    std::cout << "\n\n";
-    for(int i = 0; i < SIZE; i++)
-    {
-        for(int j = 0; j < 8; j++)
-            std::cout << Tmp.at(i,j).getIcon();
-        std::cout << "\n";
-    }
+//    for (int i = 0; i < SIZE; i++) {
+//        for (int j = 0; j < 8; j++)
+//            std::cout << expectedBoard[i][j].getIcon();
+//        std::cout << "\n";
+//    }
+//    std::cout << "\n\n";
+//    for(int i = 0; i < SIZE; i++)
+//    {
+//        for(int j = 0; j < 8; j++)
+//            std::cout << Tmp.at(i,j).getIcon();
+//        std::cout << "\n";
+//    }
     for (int i = 0; i < SIZE; i++)
         for (int j = 0; j < SIZE; j++)
             EXPECT_EQ(expectedBoard[i][j], Tmp.at(i, j));
