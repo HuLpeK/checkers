@@ -30,37 +30,42 @@ Board clearBoard()
 TEST_F(BoardTest, Check_If_Board_Is_Correctly_Build) {
     Board Tmp;
     Piece expectedBoard[8][8];
-    int index = 0;
-    for(int i = 0; i < SIZE; i += 2)
-        expectedBoard[index][i] = Man(WHITE), expectedBoard[index+2][i] = Man(WHITE);
-    index++;
-    for(int i = 1; i < SIZE; i += 2)
-        expectedBoard[index][i] = Man(WHITE);
+    for (int i = 0; i < SIZE; i++) {
+        for(int j = 0; j < SIZE; j++)
+            if((i+j)%2 == 1)
+                if(j >= 5)
+                    expectedBoard[i][j] = Man(BLACK);
+                else
+                    if(j < 3)
+                        expectedBoard[i][j] = Man(WHITE);
+    }
 
-    index = 7;
-
-    for(int i = 1; i < SIZE; i += 2)
-        expectedBoard[index][i] = Man(BLACK), expectedBoard[index-2][i] = Man(BLACK);
-    index--;
-    for(int i = 0; i < SIZE; i += 2)
-        expectedBoard[index][i] = Man(BLACK);
-
-
-    for(int i = 0; i < SIZE; i++)
-    {
-        for(int j = 0; j < 8; j++)
+    for (int i = 0; i < SIZE; i++) {
+        for (int j = 0; j < 8; j++)
             std::cout << expectedBoard[i][j].getIcon();
         std::cout << "\n";
     }
     std::cout << "\n\n";
-//    for(int i = 0; i < SIZE; i++)
-//    {
-//        for(int j = 0; j < 8; j++)
-//            std::cout << Tmp.at(i,j).getIcon();
-//        std::cout << "\n";
-//    }
+    for(int i = 0; i < SIZE; i++)
+    {
+        for(int j = 0; j < 8; j++)
+            std::cout << Tmp.at(i,j).getIcon();
+        std::cout << "\n";
+    }
+    for (int i = 0; i < SIZE; i++)
+        for (int j = 0; j < SIZE; j++)
+            EXPECT_EQ(expectedBoard[i][j], Tmp.at(i, j));
+}
+
+TEST_F(BoardTest, Check_If_1_2_Reffer_To_B_3)
+{
+    Board bo = clearBoard();
+    Piece expectedBoard[8][8];
+    bo.at(1,2) = Man(WHITE);
+    expectedBoard[5][1] = Man(WHITE);
+
     for(int i = 0; i < SIZE; i++)
         for(int j = 0; j < SIZE; j++)
-            EXPECT_EQ(expectedBoard[i][j], Tmp.at(i,j));
+            EXPECT_EQ(expectedBoard[7-j][i], bo.at(i,j));
 }
 //todo can we make better tests here?

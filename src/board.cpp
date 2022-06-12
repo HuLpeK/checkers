@@ -21,7 +21,7 @@ Board::Board() {
     int index = 0;
     for(int i = 0; i < SIZE; i++)
         for(int j = 0; j < SIZE; j++)
-            if((i+j) % 2 == 1)
+            if((i+j) % 2 == 0)
                 if(j <= 2)
                     at(i,j) = Man(WHITE);
                 else if(j >= 5)
