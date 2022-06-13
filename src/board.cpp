@@ -18,14 +18,15 @@ Piece Board::at(const int x, const int y) const {
 
 Board::Board() {
 
-    int index = 0;
     for(int i = 0; i < SIZE; i++)
         for(int j = 0; j < SIZE; j++)
-            if((i+j) % 2 == 0)
-                if(j <= 2)
-                    at(i,j) = Man(WHITE);
-                else if(j >= 5)
-                    at(i,j) = Man(BLACK);
+            if((i+j) % 2 == 0) {
+                if (j <= 2)
+                    at(i, j) = Man(WHITE);
+                else
+                    if (j >= 5)
+                        at(i, j) = Man(BLACK);
+            }
 
 }
 

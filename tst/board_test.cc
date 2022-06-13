@@ -32,12 +32,12 @@ TEST_F(BoardTest, Check_If_Board_Is_Correctly_Build) {
     Piece expectedBoard[8][8];
     for (int i = 0; i < SIZE; i++) {
         for(int j = 0; j < SIZE; j++)
-            if((i+j)%2 == 0)
-                if(j >= 5)
+            if((i+j)%2 == 0) {
+                if (j >= 5)
                     expectedBoard[i][j] = Man(BLACK);
-                else
-                    if(j < 3)
-                        expectedBoard[i][j] = Man(WHITE);
+                else if (j < 3)
+                    expectedBoard[i][j] = Man(WHITE);
+            }
     }
 
 //    for (int i = 0; i < SIZE; i++) {

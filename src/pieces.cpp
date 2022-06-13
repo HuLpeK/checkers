@@ -12,7 +12,7 @@ COLOR Piece::getColor() const {
     return Color;
 }
 
-Piece::Piece() : Color(NONE), Icon("□"), Moves(), Name("Square")  {}
+Piece::Piece() : Name("Square"), Icon("□"), Moves(), Color(NONE)  {}
 
 Piece::Piece(COLOR x) : Color(x) {}
 
