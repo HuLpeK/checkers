@@ -27,7 +27,7 @@ std::string Piece::getIcon() const {
 Man::Man(COLOR x) : Piece(x)  {
     Name = "Man";
     Moves.clear();
-    Moves = {{-1,1},{-1,-1}};
+    Moves = {{-1,1},{1,1}};
     switch (Color)
     {
         case WHITE:
@@ -42,8 +42,8 @@ Man::Man(COLOR x) : Piece(x)  {
     }
     if(Color == BLACK)
     {
-        Moves[0].first *= -1;
-        Moves[1].first *= -1;
+        Moves[0].second *= -1;
+        Moves[1].second *= -1;
     }
 }
 
