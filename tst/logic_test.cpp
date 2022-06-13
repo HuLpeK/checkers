@@ -18,7 +18,7 @@ bool operator ==(std::pair<int,int> a, std::pair<int,int> b)
 {
     return a.first == b.first and a.second == b.second;
 }
-TEST(Logic, Check_If_Win_Occured_Should_Return_NONE)
+TEST(LogicTest, Check_If_Win_Occured_Should_Return_NONE)
 {
     Board bo;
     EXPECT_EQ(Logic::win(bo), NONE);
