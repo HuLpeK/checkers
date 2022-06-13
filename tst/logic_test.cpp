@@ -168,6 +168,6 @@ TEST(LogicTest, Check_If_Possible_Bicie_White_Move_Board_Should_Return_True)
 TEST(LogicTest, Check_If_Base_Board_Is_Bicie_Possible_Should_Return_Not)
 {
     Board bo;
-    std::pair<int,int> expected {-1,1};
+    std::pair<int,int> expected {-1,-1};
     EXPECT_TRUE(expected == Logic::possibleBicie(bo,WHITE) and expected == Logic::possibleBicie(bo,BLACK));
 }

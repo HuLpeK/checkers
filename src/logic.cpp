@@ -65,23 +65,25 @@ bool Logic::legalMove(const Board &bo, std::pair<std::pair<int, int>, std::pair<
 }
 
 bool Logic::possibleBicie(const Board &bo, COLOR playerColor, std::pair<int,int> starter) {
-    COLOR oppositeColor = (playerColor == WHITE ? WHITE : BLACK);
+    COLOR oppositeColor = (playerColor == BLACK ? WHITE : BLACK);
     const auto& [startX, startY] = starter;
-    for(const auto& it: bo.at(startX, startY).getMoves())
+    for(const auto& [mvX, mvY] : bo.at(startX, startY).getMoves())
     {
-        const auto& [mvX, mvY] = it;
-        std::pair<int,int> to {startX+mvX, startY+mvY};
-        std::pair<int,int> direction {(to.first - starter.first > 0 ? 1 : -1), (to.second - starter.second > 0 ? 1 : -1)};
-        const auto& [dirX,dirY] = direction;
-        if(bo.at(to.first,to.second).getColor() == NONE)
+        const auto& [toX, toY] = std::pair<int,int> {mvX+startX,mvY+startY};
+        if(bo.at(toX,toY).getColor() == oppositeColor)
         {
-            if(bo.at(to.first-dirX,to.second-dirY).getColor() == oppositeColor)
+            const auto& [dirX,dirY] = std::pair<int,int> {
+                    (mvX > 0 ? 1 : -1),
+                    (mvY > 0 ? 1 : -1)
+            };
+            if(bo.at(toX+dirX,toY+dirY).getColor() == NONE)
             {
-                std::pair<std::pair<int,int>,std::pair<int,int>> mv {starter,to};
+                std::pair<std::pair<int,int>,std::pair<int,int>> mv {starter,{toX+dirX,toY+dirY}};
                 if(Logic::legalMove(bo,mv,playerColor))
                     return true;
             }
         }
+
     }
 
     return false;
