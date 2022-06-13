@@ -57,7 +57,7 @@ target_link_libraries(
 include(GoogleTest)
 gtest_discover_tests(checkers_test implement)
 
-add_custom_target(test
+add_custom_target(tests
         COMMAND "./checkers_test"
         DEPENDS checkers_test)
 #add_test(
