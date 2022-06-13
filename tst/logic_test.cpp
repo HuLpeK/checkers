@@ -161,6 +161,13 @@ TEST(LogicTest, Check_If_Possible_Bicie_White_Move_Board_Should_Return_True)
     bo.at(1,2) = Man(WHITE); //H1
     // {1,2} -> {B,3}
     bo.at(2,3) = Man(BLACK);
-    std::pair<int,int> expected = {-1,-1};
+    std::pair<int,int> expected {-1,-1};
     EXPECT_FALSE(expected == Logic::possibleBicie(bo,WHITE));
+}
+
+TEST(LogicTest, Check_If_Base_Board_Is_Bicie_Possible_Should_Return_Not)
+{
+    Board bo;
+    std::pair<int,int> expected {-1,1};
+    EXPECT_TRUE(expected == Logic::possibleBicie(bo,WHITE) and expected == Logic::possibleBicie(bo,BLACK));
 }
