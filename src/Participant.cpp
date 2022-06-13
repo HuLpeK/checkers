@@ -11,6 +11,7 @@ COLOR Participant::getColor() {
 }
 
 std::pair<std::pair<int, int>, std::pair<int, int>> Player::makeMove(const Board &bo) {
+    bo.at(0,0).getColor();
     std::cout << "Ruch:" << (playerColor == WHITE ? "BIAŁYCH" : "CZARNYCH") << "\nPodaj Współrzedne ruchu!: ";
     char xStart {};
     int yStart {};
@@ -42,6 +43,7 @@ char Player::toUpperCase(char C) {
 Player::Player(COLOR x) : Participant(x) {}
 
 std::pair<std::pair<int, int>, std::pair<int, int>> Player::makeMove(const Board &bo, std::pair<std::pair<int, int>, std::pair<int, int>> oldMove) {
+    bo.at(0,0).getColor();
     const auto [fromOld, toOld] = oldMove;
     std::cout << "Ruch:" << (playerColor == WHITE ? "BIAŁYCH" : "CZARNYCH") << "\nPodaj Współrzedne ruchu!: "
         << (char)('A' + toOld.first) << toOld.second+1 << " -> ";

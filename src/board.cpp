@@ -18,14 +18,15 @@ Piece Board::at(const int x, const int y) const {
 
 Board::Board() {
 
-    int index = 0;
     for(int i = 0; i < SIZE; i++)
         for(int j = 0; j < SIZE; j++)
-            if((i+j) % 2 == 0)
-                if(j <= 2)
-                    at(i,j) = Man(WHITE);
-                else if(j >= 5)
-                    at(i,j) = Man(BLACK);
+            if((i+j) % 2 == 0) {
+                if (j <= 2)
+                    at(i, j) = Man(WHITE);
+                else
+                    if (j >= 5)
+                        at(i, j) = Man(BLACK);
+            }
 
 }
 
@@ -35,8 +36,8 @@ std::ostream &operator<<(std::ostream &out,const Board &Bo) {
     std::string tab[SIZE+3][SIZE+3];
     for(int i = 0; i <= SIZE; i++)
     {
-        tab[SIZE][i+1] = 'A' + i;
-        tab[i-1][0] = '9' - i;
+        tab[SIZE][i+1] = std::to_string('A' + i);
+        tab[i-1][0] = std::to_string('9' - i);
     }
     tab[SIZE][0] = " ";
     for(int i = 0; i < SIZE ; i++)

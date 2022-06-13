@@ -69,7 +69,7 @@ void Game::Start() {
     }
 }
 
-Game::Game() : white(WHITE), black(BLACK), board() {}
+Game::Game() :board(), white(WHITE), black(BLACK) {}
 
 bool Game::makeMove(std::pair<std::pair<int, int>, std::pair<int, int>> move, COLOR actualColor) {
     auto [from,to] = move;

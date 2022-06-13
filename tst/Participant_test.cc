@@ -38,7 +38,7 @@ TEST_F(ParticipantTest, Test_Player_ToUpperCaseTest_Should_Return_Char_In_UpperI
     ans.shrink_to_fit();
 
     EXPECT_EQ(ans.size(),expected.size());
-    for(int i = 0; i < ans.size(); i++)
+    for(unsigned i = 0; i < ans.size(); i++)
         EXPECT_EQ(ans[i],expected[i]);
 
 
