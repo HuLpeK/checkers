@@ -36,8 +36,8 @@ std::ostream &operator<<(std::ostream &out,const Board &Bo) {
     std::string tab[SIZE+3][SIZE+3];
     for(int i = 0; i <= SIZE; i++)
     {
-        tab[SIZE][i+1] = 'A' + i;
-        tab[i-1][0] = '9' - i;
+        tab[SIZE][i+1] = std::to_string('A' + i);
+        tab[i-1][0] = std::to_string('9' - i);
     }
     tab[SIZE][0] = " ";
     for(int i = 0; i < SIZE ; i++)
