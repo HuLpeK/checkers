@@ -68,7 +68,7 @@ bool Logic::legalMove(const Board &bo, std::pair<std::pair<int, int>, std::pair<
 bool Logic::possibleBicie(const Board &bo, COLOR playerColor, std::pair<int,int> starter) {
     COLOR oppositeColor = (playerColor == BLACK ? WHITE : BLACK);
     const auto& [startX, startY] = starter;
-    for(const auto& [mvX, mvY] : bo.at(startX, startY).getMoves())
+    for(const auto& [mvX, mvY] : bo.at(startX, startY).getAttacks())
     {
         const auto& [toX, toY] = std::pair<int,int> {mvX+startX,mvY+startY};
         if(bo.at(toX,toY).getColor() == oppositeColor)

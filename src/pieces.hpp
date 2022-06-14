@@ -30,6 +30,9 @@ protected:
     //! Vector of avalible Piece moves
     /*! Implemented as std::vector of std::pairs of X,Y coordinates.*/
     std::vector<std::pair<int,int>> Moves;
+    //! Vector of avalible Piece attacks
+    /*! Implemented as std::vector of std::pairs of X,Y coordinates.*/
+    std::vector<std::pair<int,int>> attacks;
     //! Color of Piece
     COLOR Color;
 public:
@@ -49,6 +52,11 @@ public:
      * @return std::vector Moves;
      */
     std::vector<std::pair<int, int>> getMoves() const;
+    /**
+     * Getter Method
+     * @return std::vector Attacks;
+     */
+    std::vector<std::pair<int, int>> getAttacks() const;
     /**
      * Getter method
      * @return Icon of Piece
