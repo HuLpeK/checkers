@@ -67,6 +67,11 @@ void Game::Start() {
         else
             actualColor = WHITE;
     }
+    std::cout << board << '\n';
+    if(Logic::win(board) == WHITE)
+        std::cout << "Wygrał Czarny!\n\n";
+    else
+        std::cout << "Wygrał Biały!\n\n";
 }
 
 Game::Game() :board(), white(WHITE), black(BLACK) {}
@@ -75,10 +80,17 @@ bool Game::makeMove(std::pair<std::pair<int, int>, std::pair<int, int>> move, CO
     auto [from,to] = move;
     board.at(from.first,from.second) = Piece();
 
-    if(actualColor == WHITE and to.second == SIZE-1)
-        board.at(to.first,to.second) = King(WHITE);
+    if(actualColor == WHITE and to.second == SIZE-1 ) {
+        board.at(to.first,to.second) = Man(WHITE);
+        if(!Logic::possibleBicie(board,actualColor,to))
+            board.at(to.first, to.second) = King(WHITE);
+    }
     if(actualColor == BLACK and to.second == 0)
-        board.at(to.first,to.second) = King(BLACK);
+    {
+        board.at(to.first,to.second) = Man(WHITE);
+        if(!Logic::possibleBicie(board,actualColor,to))
+            board.at(to.first,to.second) = King(BLACK);
+    }
 
     if(actualColor == WHITE and to.second != SIZE-1)
         board.at(to.first,to.second) = Man(WHITE);
