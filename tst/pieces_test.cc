@@ -1,7 +1,4 @@
-/**
- * \file pieces_test.cc
- * @author Hubert Kulpaczyński
- */
+
 #include <gtest/gtest.h>
 #include "gmock/gmock.h"
 #include "../src/pieces.hpp"
