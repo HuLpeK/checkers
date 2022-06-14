@@ -26,7 +26,7 @@ void Game::Start() {
         }
         const auto [fromX, fromY] = Logic::possibleBicie(board, actualColor);
 
-        if (!makeMove(mv, actualColor) and fromX != -1) // if bicie hasn't been done check if possibleBicie was possibleBicie
+        if (!makeMove(mv, actualColor)) // if bicie hasn't been done check if possibleBicie was possibleBicie
         {
             std::cout << "Za niebicie tracisz zycie!\n";
             board.at(fromX,fromY) = Piece();
