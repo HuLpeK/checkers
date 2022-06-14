@@ -31,7 +31,7 @@ void Game::Start() {
             std::cout << "Za niebicie tracisz zycie!\n";
             board.at(fromX,fromY) = Piece();
         }
-        else while(Logic::possibleBicie(board,actualColor, mv.second)) // performed bicie but one more is possible
+        else while(Logic::possibleBicie(board,actualColor, mv.first)) // performed bicie but one more is possible
         {
             std::cout << board;
             if(actualColor == WHITE)
