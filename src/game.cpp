@@ -77,13 +77,13 @@ bool Game::makeMove(std::pair<std::pair<int, int>, std::pair<int, int>> move, CO
 
     if(actualColor == WHITE and to.second == SIZE-1)
         board.at(to.first,to.second) = King(WHITE);
-    if(actualColor == BLACK and to.first == 0)
+    if(actualColor == BLACK and to.second == 0)
         board.at(to.first,to.second) = King(BLACK);
 
-    if(actualColor == WHITE and to.first != SIZE-1)
+    if(actualColor == WHITE and to.second != SIZE-1)
         board.at(to.first,to.second) = Man(WHITE);
 
-    if(actualColor == BLACK and to.first != 0)
+    if(actualColor == BLACK and to.second != 0)
         board.at(to.first,to.second) = Man(BLACK);
 
     bool flag = false;
