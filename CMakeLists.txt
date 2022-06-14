@@ -45,7 +45,7 @@ enable_testing()
 
 add_executable(
         checkers_test
-        tst/board_test.cc tst/pieces_test.cc tst/Participant_test.cc tst/logic_test.cpp)
+        tst/board_test.cc tst/pieces_test.cc tst/Participant_test.cc tst/logic_test.cpp tst/game_test.cc)
 
 target_link_libraries(
         checkers_test
