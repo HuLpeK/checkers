@@ -218,3 +218,14 @@ TEST(LogicTest,Check_Test_From_RealLife)
 
     EXPECT_TRUE(Logic::legalMove(bo,mv,WHITE));
 }
+
+TEST(LogicTest, Check_Illegal_Move_Not_Diagonal)
+{
+    Board bo;
+    clear(bo);
+    bo.at(1,2) = Man(WHITE);
+    std::pair<int,int> from {1,2};
+    std::pair<int,int> to {3,4};
+    std::pair<std::pair<int,int>,std::pair<int,int>> mv{from,to};
+    EXPECT_FALSE(Logic::legalMove(bo,mv,WHITE));
+}
