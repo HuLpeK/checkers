@@ -223,8 +223,8 @@ TEST(LogicTest, Check_Illegal_Move_Not_Diagonal)
 {
     Board bo;
     clear(bo);
-    bo.at(1,2) = Man(WHITE);
-    std::pair<int,int> from {1,2};
+    bo.at(1,1) = Man(WHITE);
+    std::pair<int,int> from {1,1};
     std::pair<int,int> to {3,4};
     std::pair<std::pair<int,int>,std::pair<int,int>> mv{from,to};
     EXPECT_FALSE(Logic::legalMove(bo,mv,WHITE));
