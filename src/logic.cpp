@@ -47,7 +47,7 @@ bool Logic::legalMove(const Board &bo, std::pair<std::pair<int, int>, std::pair<
     const auto& [dirX, dirY] = direction;
 
 //    if(abs(from.first - to.first) != abs(from.second - to.second)) // if it's not diagonal
-    if(to.first - from.first == 0 or to.second - from.second == 0)
+    if(abs(to.first - from.first) != abs(to.second - from.second))
        return false;
 
     for(int i = from.first, j = from.second; i != to.first-dirX and j != to.second-dirY; i+= dirX, j+=dirY)

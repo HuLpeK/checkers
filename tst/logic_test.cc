@@ -210,12 +210,12 @@ TEST(LogicTest,Check_Test_From_RealLife)
     bo.at(x[0]-'A',y-1) = Man(BLACK);
 
     std::pair<char,int> fr {'D',4};
-    std::pair<char,int> to {'A',6};
+    std::pair<char,int> to {'B',6};
     std::pair<std::pair<int,int>,std::pair<int,int>> mv {
             {fr.first-'A',fr.second-1},
             {to.first-'A',to.second-1}
     };
-
+//    std::cout << bo << "\n";
     EXPECT_TRUE(Logic::legalMove(bo,mv,WHITE));
 }
 
