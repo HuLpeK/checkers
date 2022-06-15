@@ -2,9 +2,10 @@ cmake_minimum_required(VERSION 3.22)
 project(checkers)
 
 set(CMAKE_CXX_STANDARD 20)
-
+add_compile_options(-Wall -Wextra -pedantic -Werror)
 add_executable(checkers main.cpp src/pieces.cpp src/pieces.hpp src/board.cpp src/board.hpp src/game.cpp src/game.hpp src/Participant.cpp src/Participant.hpp src/logic.cpp src/logic.hpp)
 
+add_library(implement src/pieces.cpp src/pieces.hpp src/board.cpp src/board.hpp src/game.cpp src/game.hpp src/Participant.cpp src/Participant.hpp src/logic.cpp src/logic.hpp)
 #Doxy Gen
 option(BUILD_DOC "Build documentation" ON)
 
@@ -28,3 +29,38 @@ if (DOXYGEN_FOUND)
 else (DOXYGEN_FOUND)
     message("Doxygen need to be installed to generate the doxygen documentation")
 endif (DOXYGEN_FOUND)
+
+
+
+include(FetchContent)
+FetchContent_Declare(
+        googletest
+        GIT_REPOSITORY https://github.com/google/googletest.git
+        GIT_TAG main
+)
+
+FetchContent_MakeAvailable(googletest)
+
+enable_testing()
+
+add_executable(
+        checkers_test
+        tst/board_test.cc tst/pieces_test.cc tst/Participant_test.cc tst/logic_test.cc)
+
+target_link_libraries(
+        checkers_test
+        gtest_main
+        gtest
+        gmock
+        implement
+)
+include(GoogleTest)
+gtest_discover_tests(checkers_test implement)
+
+add_custom_target(tests
+        COMMAND "./checkers_test"
+        DEPENDS checkers_test)
+#add_test(
+#        NAME checkers_test
+#        COMMAND checkers_test
+#)

@@ -40,6 +40,7 @@ public:
 //! Player (User)
 class Player : public Participant
 {
+public:
     /**
      * Changes char from range: [A-Za-z] to A-Z
      * @param C - char from range [A-za-z]
@@ -47,7 +48,6 @@ class Player : public Participant
      * @return - if C is not from range [A-za-z] return '~'.
      */
     static char toUpperCase(char C);
-public:
     /**
     * Virtual method that defines Piece move\n
     * @invariant Bounds and legality of move is not checked here.

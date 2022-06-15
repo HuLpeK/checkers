@@ -21,12 +21,18 @@ enum COLOR {
 //! Class that provides template for creating Man and King.
 class Piece {
 protected:
-    //! Name of Piece
+    //! Name of Piece @defult - "Square"
     std::string Name;
+    /**
+     * Shown Icon of Piece.
+     */
     std::string Icon;
     //! Vector of avalible Piece moves
     /*! Implemented as std::vector of std::pairs of X,Y coordinates.*/
     std::vector<std::pair<int,int>> Moves;
+    //! Vector of avalible Piece attacks
+    /*! Implemented as std::vector of std::pairs of X,Y coordinates.*/
+    std::vector<std::pair<int,int>> attacks;
     //! Color of Piece
     COLOR Color;
 public:
@@ -34,23 +40,28 @@ public:
      * Getter Method
      * @return Name
      */
-    virtual std::string getName() const;
+    std::string getName() const;
     /**
      * Getter Method
      * @return Color of Piece
      */
-    virtual COLOR getColor() const;
+    COLOR getColor() const;
 
     /**
      * Getter Method
      * @return std::vector Moves;
      */
-    virtual std::vector<std::pair<int, int>> getMoves() const;
+    std::vector<std::pair<int, int>> getMoves() const;
+    /**
+     * Getter Method
+     * @return std::vector Attacks;
+     */
+    std::vector<std::pair<int, int>> getAttacks() const;
     /**
      * Getter method
      * @return Icon of Piece
      */
-    virtual std::string getIcon() const;
+    std::string getIcon() const;
 
     /**
      * Constructor that sets Color to NONE.

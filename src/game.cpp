@@ -6,8 +6,6 @@
 #include "logic.hpp"
 void Game::Start() {
     COLOR actualColor = WHITE;
-//    board.at(1,3) = Man(BLACK);
-//    board.at(4,6) = Piece();H
     while(!Logic::win(board)) {
 
         std::cout << board;
@@ -28,7 +26,7 @@ void Game::Start() {
         }
         const auto [fromX, fromY] = Logic::possibleBicie(board, actualColor);
 
-        if (!makeMove(mv, actualColor) and fromX != -1) // if bicie hasn't been done check if possibleBicie was possibleBicie
+        if (!makeMove(mv, actualColor)) // if bicie hasn't been done check if possibleBicie was possibleBicie
         {
             std::cout << "Za niebicie tracisz zycie!\n";
             board.at(fromX,fromY) = Piece();
@@ -69,23 +67,35 @@ void Game::Start() {
         else
             actualColor = WHITE;
     }
+    std::cout << board << '\n';
+    if(Logic::win(board) == WHITE)
+        std::cout << "Wygrał Czarny!\n\n";
+    else
+        std::cout << "Wygrał Biały!\n\n";
 }
 
-Game::Game() : white(WHITE), black(BLACK), board() {}
+Game::Game() :board(), white(WHITE), black(BLACK) {}
 
 bool Game::makeMove(std::pair<std::pair<int, int>, std::pair<int, int>> move, COLOR actualColor) {
     auto [from,to] = move;
     board.at(from.first,from.second) = Piece();
 
-    if(actualColor == WHITE and to.first == SIZE-1)
-        board.at(to.first,to.second) = King(WHITE);
-    if(actualColor == BLACK and to.first == 0)
-        board.at(to.first,to.second) = King(BLACK);
+    if(actualColor == WHITE and to.second == SIZE-1 ) {
+        board.at(to.first,to.second) = Man(WHITE);
+        if(!Logic::possibleBicie(board,actualColor,to))
+            board.at(to.first, to.second) = King(WHITE);
+    }
+    if(actualColor == BLACK and to.second == 0)
+    {
+        board.at(to.first,to.second) = Man(WHITE);
+        if(!Logic::possibleBicie(board,actualColor,to))
+            board.at(to.first,to.second) = King(BLACK);
+    }
 
-    if(actualColor == WHITE and to.first != SIZE-1)
+    if(actualColor == WHITE and to.second != SIZE-1)
         board.at(to.first,to.second) = Man(WHITE);
 
-    if(actualColor == BLACK and to.first != 0)
+    if(actualColor == BLACK and to.second != 0)
         board.at(to.first,to.second) = Man(BLACK);
 
     bool flag = false;
