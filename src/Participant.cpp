@@ -4,14 +4,14 @@
 
 #include "Participant.hpp"
 
-Participant::Participant(COLOR x) : playerColor(x) {}
+Participant::Participant(COLOR x, Board& bo) : playerColor(x), bo(bo) {}
 
 COLOR Participant::getColor() {
     return playerColor;
 }
 
-std::pair<std::pair<int, int>, std::pair<int, int>> Player::makeMove(const Board &bo) {
-    bo.at(0,0).getColor();
+std::pair<std::pair<int, int>, std::pair<int, int>> Player::makeMove() {
+
     std::cout << "Ruch:" << (playerColor == WHITE ? "BIAŁYCH" : "CZARNYCH") << "\nPodaj Współrzedne ruchu!: ";
     char xStart {};
     int yStart {};
@@ -40,10 +40,10 @@ char Player::toUpperCase(char C) {
 
 }
 
-Player::Player(COLOR x) : Participant(x) {}
+Player::Player(COLOR x, Board& bo) : Participant(x,bo) {}
 
-std::pair<std::pair<int, int>, std::pair<int, int>> Player::makeMove(const Board &bo, std::pair<std::pair<int, int>, std::pair<int, int>> oldMove) {
-    bo.at(0,0).getColor();
+std::pair<std::pair<int, int>, std::pair<int, int>> Player::makeMove(std::pair<std::pair<int, int>, std::pair<int, int>> oldMove) {
+
     const auto [fromOld, toOld] = oldMove;
     std::cout << "Ruch:" << (playerColor == WHITE ? "BIAŁYCH" : "CZARNYCH") << "\nPodaj Współrzedne ruchu!: "
         << (char)('A' + toOld.first) << toOld.second+1 << " -> ";

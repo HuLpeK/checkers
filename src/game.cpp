@@ -14,16 +14,16 @@ void Game::Start() {
         std::pair<std::pair<int, int>, std::pair<int, int>> mv{};
 
         if (actualColor == WHITE)
-            mv = white.makeMove(board);
+            mv = white.makeMove();
         else
-            mv = black.makeMove(board);
+            mv = black.makeMove();
 
         while (!Logic::legalMove(board, mv, actualColor)) {
             std::cout << "BLAD!\n";
             if (actualColor == WHITE)
-                mv = white.makeMove(board);
+                mv = white.makeMove();
             else
-                mv = black.makeMove(board);
+                mv = black.makeMove();
         }
         const auto [fromX, fromY] = Logic::possibleBicie(board, actualColor);
 
@@ -38,23 +38,23 @@ void Game::Start() {
             if(actualColor == WHITE)
             {
                 std::pair<std::pair<int,int>,std::pair<int,int>> tmp {{-1,-1},{-1,-1}};
-                tmp = white.makeMove(board,mv);
+                tmp = white.makeMove(mv);
 
                 while(!Logic::legalMove(board,tmp,WHITE))
                 {
                     std::cout << "BLAD2!\n";
-                    tmp = white.makeMove(board,mv);
+                    tmp = white.makeMove(mv);
                 }
                 mv = tmp;
             }
             if(actualColor == BLACK)
             {
                 std::pair<std::pair<int,int>,std::pair<int,int>> tmp {{-1,-1},{-1,-1}};
-                tmp = white.makeMove(board,mv);
+                tmp = white.makeMove(mv);
                 while(!Logic::legalMove(board,tmp,BLACK))
                 {
                     std::cout << "BLAD2!\n";
-                    tmp = white.makeMove(board,mv);
+                    tmp = white.makeMove(mv);
                 }
                 mv = tmp;
             }
@@ -75,7 +75,7 @@ void Game::Start() {
         std::cout << "Wygrał Biały!\n\n";
 }
 
-Game::Game() :board(), white(WHITE), black(BLACK) {}
+Game::Game() :board(), white(WHITE, board), black(BLACK, board) {}
 
 bool Game::makeMove(std::pair<std::pair<int, int>, std::pair<int, int>> move, COLOR actualColor) {
     auto [from,to] = move;
