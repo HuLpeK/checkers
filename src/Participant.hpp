@@ -82,6 +82,7 @@ protected:
     /**
      * Define move for Bot if Bicie is possible.
      * @param start Starting position
+     * @invariant Bicie is always possible.
      * @return pair {x,y} where to move Piece from start ( start -> {x,y} ).
      */
     std::pair<int,int> makeBicie(const std::pair<int,int> start);

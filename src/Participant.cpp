@@ -79,7 +79,23 @@ std::pair<std::pair<int, int>, std::pair<int, int>> Bot::makeMove() {
 }
 
 std::pair<int, int> Bot::makeBicie(const std::pair<int, int> start) {
-    return {start};
+    COLOR oppositeColor = (playerColor == BLACK ? WHITE : BLACK);
+    const auto& [startX, startY] = start;
+    for(const auto& [mvX, mvY] : bo.at(startX, startY).getAttacks()) {
+        const auto &[toX, toY] = std::pair<int, int>{mvX + startX, mvY + startY};
+        if (bo.at(toX, toY).getColor() == oppositeColor) {
+            const auto &[dirX, dirY] = std::pair<int, int>{
+                    (mvX > 0 ? 1 : -1),
+                    (mvY > 0 ? 1 : -1)
+            };
+            if (bo.at(toX + dirX, toY + dirY).getColor() == NONE) {
+                std::pair<std::pair<int, int>, std::pair<int, int>> mv{start, {toX + dirX, toY + dirY}};
+                if (Logic::legalMove(bo, mv, playerColor))
+                    return mv.second;
+            }
+        }
+    }
+    return {-1,-1};
 }
 
 std::vector<std::pair<int, int>> Bot::getPieces() {
