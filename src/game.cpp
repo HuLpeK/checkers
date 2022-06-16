@@ -4,10 +4,11 @@
 
 #include "game.hpp"
 #include "logic.hpp"
+#include "clear.h"
 void Game::Start() {
     COLOR actualColor = WHITE;
     while(!Logic::win(board)) {
-
+        clear_screen();
         std::cout << board;
 
         std::pair<std::pair<int, int>, std::pair<int, int>> mv{};
