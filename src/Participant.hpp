@@ -9,6 +9,7 @@
 
 #include <utility>
 #include "board.hpp"
+#include "logic.hpp"
 //! Virtual template class.
 class Participant {
 protected:
@@ -16,7 +17,9 @@ protected:
      * Color of player.
      */
     COLOR playerColor;
-
+    /**
+     * Reference to Board that game is taking place.
+     */
     const Board& bo;
 public:
     /**
@@ -75,6 +78,20 @@ public:
 
 class Bot : public Participant
 {
+protected:
+    /**
+     * Define move for Bot if Bicie is possible.
+     * @param start Starting position
+     * @return pair {x,y} where to move Piece from start ( start -> {x,y} ).
+     */
+    std::pair<int,int> makeBicie(const std::pair<int,int> start);
+
+
+    /**     *
+     * @invariant At least one Piece of playerColor on Board.
+     * @return All Pieces of playerColor of board sorted from furthest to closest.
+     */
+    std::vector<std::pair<int, int>> getPieces();
 public:
     /**
      * Constructor for bot

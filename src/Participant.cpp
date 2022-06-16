@@ -60,3 +60,44 @@ std::pair<std::pair<int, int>, std::pair<int, int>> Player::makeMove(std::pair<s
 
 
 Bot::Bot(COLOR x, Board &bo) : Participant(x, bo) {}
+
+std::pair<std::pair<int, int>, std::pair<int, int>> Bot::makeMove() {
+    if (Logic::possibleBicie(bo, playerColor) != std::pair<int, int>{-1, -1})
+        return {Logic::possibleBicie(bo, playerColor), makeBicie(Logic::possibleBicie(bo, playerColor))};
+
+    std::vector<std::pair<int, int>> posPieces{getPieces()};
+
+    for(const auto& [x,y] : posPieces)
+        for(const auto& [mvX,mvY] : bo.at(x,y).getMoves())
+        {
+            std::pair<std::pair<int,int>,std::pair<int,int>> mv {{x,y},{x+mvX,y+mvY}};
+            if(Logic::legalMove(bo,mv,playerColor))
+                return {{x,y},{mvX+x,mvY+y}};
+        }
+
+    return std::pair<std::pair<int, int>, std::pair<int, int>>();
+}
+
+std::pair<int, int> Bot::makeBicie(const std::pair<int, int> start) {
+    return {start};
+}
+
+std::vector<std::pair<int, int>> Bot::getPieces() {
+
+    std::vector<std::pair<int,int>> pos {};
+    for(int i = 0; i < SIZE; i++)
+        for(int j = 0; j < SIZE; j++)
+            if(bo.at(i,j).getColor() == playerColor)
+                pos.emplace_back(i,j);
+
+    auto comp = [](const std::pair<int,int>& a, const std::pair<int,int>& b)
+    {
+        return a.second > b.second;
+    };
+
+    std::sort(pos.begin(), pos.end(), comp);
+    if(playerColor == BLACK)
+        std::reverse(pos.begin(), pos.end());
+
+    return pos;
+}
