@@ -166,5 +166,36 @@ TEST_F(ParticipantTest, Bot_Test_If_Furthest_Move_Is_Not_Legal_For_White)
     const auto mv = pl.makeMove();
     const auto& [from, to] = mv;
     EXPECT_TRUE((from == std::pair{1,0} and (to == std::pair{0,1} or to == std::pair{2,1})));
+}
 
+TEST_F(ParticipantTest, Bot_Test_If_Bicie_Is_Working_For_White)
+{
+    Board bo;
+    clearBoard(bo);
+    Bot pl(WHITE,bo);
+    bo.at(1,2) = Man(WHITE);
+    bo.at(2,3) = Man(BLACK);
+
+    bo.at(6,6) = Man(WHITE);
+    const auto mv = pl.makeMove();
+    const auto& [from, to] = mv;
+
+
+    EXPECT_TRUE((from == std::pair{1,2} and to == std::pair{3,4}));
+}
+
+TEST_F(ParticipantTest, Bot_Test_If_Bicie_Is_Working_For_Black)
+{
+    Board bo;
+    clearBoard(bo);
+    Bot pl(BLACK,bo);
+    bo.at(1,2) = Man(WHITE);
+    bo.at(2,3) = Man(BLACK);
+
+    bo.at(6,1) = Man(BLACK);
+
+    const auto mv = pl.makeMove();
+    const auto& [from, to] = mv;
+
+    EXPECT_TRUE((from == std::pair{2,3} and to == std::pair{0,1}));
 }
