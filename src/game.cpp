@@ -4,7 +4,7 @@
 
 #include "game.hpp"
 #include "logic.hpp"
-#include "clear.h"
+#include "../utils/clear.h"
 void Game::Start() {
     COLOR actualColor = WHITE;
     while(!Logic::win(board)) {
