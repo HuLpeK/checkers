@@ -59,3 +59,4 @@ std::pair<std::pair<int, int>, std::pair<int, int>> Player::makeMove(std::pair<s
 }
 
 
+Bot::Bot(COLOR x, Board &bo) : Participant(x, bo) {}

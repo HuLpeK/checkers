@@ -50,19 +50,19 @@ public:
      */
     static char toUpperCase(char C);
     /**
-    * Virtual method that defines Piece move\n
+    * Method that defines Piece move\n
     * @invariant Bounds and legality of move is not checked here.
     * @return Pair of defined move {X,Y} -> {X,Y}.
     */
     std::pair<std::pair<int, int>, std::pair<int, int>> makeMove();
 
     /**
-    * Virtual method that defines Piece move\n
+    * Method that defines Piece move\n
     * @invariant Bounds and legality of move is not checked here.
     * @param oldMove - Old move from which you start new one.
     * @return Pair of defined move {X,Y} -> {X,Y}.
     */
-    std::pair<std::pair<int, int>, std::pair<int, int>> makeMove( std::pair<std::pair<int, int>, std::pair<int, int>> oldMove);
+    std::pair<std::pair<int, int>, std::pair<int, int>> makeMove(std::pair<std::pair<int, int>, std::pair<int, int>> oldMove);
 
         /**
          * Constructor for Player using Participant constructor.
@@ -73,4 +73,31 @@ public:
 
 };
 
+class Bot : public Participant
+{
+public:
+    /**
+     * Constructor for bot
+     * @param x - COLOR of side
+     * @param bo - Board that game takes place at.
+     */
+    explicit Bot(COLOR x, Board& bo);
+
+
+    /**
+    * Method that defines Piece move\n
+    * @invariant Bounds and legality of move is not checked here.
+    * @return Pair of defined move {X,Y} -> {X,Y}.
+    */
+    std::pair<std::pair<int, int>, std::pair<int, int>> makeMove();
+
+    /**
+    * Method that defines Piece move\n
+    * @invariant Bounds and legality of move is not checked here.
+    * @param oldMove - Old move from which you start new one.
+    * @return Pair of defined move {X,Y} -> {X,Y}.
+    */
+    std::pair<std::pair<int, int>, std::pair<int, int>> makeMove(std::pair<std::pair<int, int>, std::pair<int, int>> oldMove);
+
+};
 #endif //CHECKERS_PARTICIPANT_HPP
