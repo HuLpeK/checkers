@@ -7,7 +7,7 @@
 #define CHECKERS_PARTICIPANT_HPP
 
 
-#include <__utility/pair.h>
+#include <utility>
 #include "board.hpp"
 //! Virtual template class.
 class Participant {
