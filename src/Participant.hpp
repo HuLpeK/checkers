@@ -25,6 +25,7 @@ public:
     /**
      * Constructor of Participant
      * @param x - Color of Participant.
+     * @param bo - Board that game is taking place on.
      */
     explicit Participant(COLOR x, Board& bo);
     /**
@@ -76,6 +77,9 @@ public:
 
 };
 
+/**
+ * Simple 'AI' to play with.
+ */
 class Bot : public Participant
 {
 protected:

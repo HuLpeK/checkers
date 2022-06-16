@@ -6,6 +6,10 @@
  @author Hubert Kulpaczyński
  */
 
+/**
+ * Main Function that turns on the game!
+ * @return 0
+ */
 int main() {
     Game x;
 
