@@ -3,7 +3,7 @@
 //
 
 #include "board.hpp"
-
+#include "clear.h"
 
 Piece &Board::at(const int x,const  int y) {
     return Square[7-y][x];
@@ -17,7 +17,7 @@ Piece Board::at(const int x, const int y) const {
 
 
 Board::Board() {
-
+    clear_screen();
     for(int i = 0; i < SIZE; i++)
         for(int j = 0; j < SIZE; j++)
             if((i+j) % 2 == 0) {
@@ -31,7 +31,7 @@ Board::Board() {
 }
 
 std::ostream &operator<<(std::ostream &out,const Board &Bo) {
-    system("clear"); //todo change to smth more elegant
+
 
     std::string tab[SIZE+3][SIZE+3];
     for(int i = 0; i <= SIZE; i++)
