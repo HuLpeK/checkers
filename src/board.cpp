@@ -3,7 +3,7 @@
 //
 
 #include "board.hpp"
-#include "clear.h"
+#include "../utils/clear.h"
 
 Piece &Board::at(const int x,const  int y) {
     return Square[7-y][x];
