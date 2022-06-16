@@ -6,8 +6,8 @@
 class PiecesTest : public ::testing::Test
 {
 protected:
-    PiecesTest() = default;;
-    ~PiecesTest() override = default;;
+    PiecesTest() = default;
+    ~PiecesTest() override = default;
 
     void SetUp() override {};
     void TearDown() override {};

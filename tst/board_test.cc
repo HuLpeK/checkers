@@ -8,8 +8,8 @@
 class BoardTest : public ::testing::Test
 {
 protected:
-    BoardTest() = default;;
-    ~BoardTest() override = default;;
+    BoardTest() = default;
+    ~BoardTest() override = default;
 
     void SetUp() override {};
     void TearDown() override {};

@@ -6,8 +6,8 @@
 class GameTest : public ::testing::Test
 {
 protected:
-    GameTest() = default;;
-    ~GameTest() override = default;;
+    GameTest() = default;
+    ~GameTest() override = default;
 
     void SetUp() override {};
     void TearDown() override {};

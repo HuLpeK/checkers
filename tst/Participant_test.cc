@@ -5,9 +5,9 @@
 
 class ParticipantTest : public ::testing::Test {
 protected:
-    ParticipantTest() = default;;
+    ParticipantTest() = default;
 
-    ~ParticipantTest() override = default;;
+    ~ParticipantTest() override = default;
 
     void SetUp() override {};
 
