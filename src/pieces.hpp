@@ -21,7 +21,7 @@ enum COLOR {
 //! Class that provides template for creating Man and King.
 class Piece {
 protected:
-    //! Name of Piece @defult - "Square"
+    //! Name of Piecee - "Square"
     std::string Name;
     /**
      * Shown Icon of Piece.
