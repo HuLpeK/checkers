@@ -13,7 +13,7 @@ class Game {
 protected:
     Board board; ///< Board
     Player white; ///< White player.
-    Player black; ///< Black player.
+    Bot black; ///< Black player.
 
     /**
      * Perform actual move.
