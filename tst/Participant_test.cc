@@ -97,3 +97,39 @@ TEST_F(ParticipantTest, Bot_Test_Check_if_Performs_King_BLACK_Not_Bicie_Move)
             flag = true;
     EXPECT_TRUE((flag and mv.first == std::pair{4,5}));
 }
+
+TEST_F(ParticipantTest, Bot_Test_Check_If_Furthes_Is_Moved_For_White)
+{
+    Board bo;
+    clearBoard(bo);
+    Bot Pl(WHITE,bo);
+
+    bo.at(1,1) = Man(WHITE);
+    bo.at(1,6) = Man(WHITE);
+
+    bo.at(2,3) = Man(BLACK);
+    bo.at(7,7) = Man(BLACK);
+
+    const auto mv = Pl.makeMove();
+
+    const auto& [from,to] = mv;
+    EXPECT_TRUE((from == std::pair{1,6} and (to == std::pair{0,7} or to == std::pair{2,6})));
+}
+
+TEST_F(ParticipantTest, Bot_Test_Check_If_Furthes_Is_Moved_For_Black)
+{
+    Board bo;
+    clearBoard(bo);
+    Bot Pl(BLACK,bo);
+
+    bo.at(1,1) = Man(WHITE);
+    bo.at(1,6) = Man(WHITE);
+
+    bo.at(2,3) = Man(BLACK);
+    bo.at(7,7) = Man(BLACK);
+
+    const auto mv = Pl.makeMove();
+
+    const auto& [from,to] = mv;
+    EXPECT_TRUE((from == std::pair{2,3} and (to == std::pair{1,2} or to == std::pair{3,2})));
+}
