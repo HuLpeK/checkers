@@ -77,9 +77,7 @@ public:
 
 };
 
-/**
- * Simple 'AI' to play with.
- */
+ //! Simple 'AI' to play with.
 class Bot : public Participant
 {
 protected:
