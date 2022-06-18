@@ -8,6 +8,7 @@
 
 #include "board.hpp"
 #include "Participant.hpp"
+
 //! Class that Handles whole game.
 class Game {
 protected:
@@ -22,7 +23,8 @@ protected:
      * @invariant Move is legal.
      * @return True - if it's bicie has been done.
      */
-    bool makeMove(std::pair<std::pair<int,int>, std::pair<int,int>> move, COLOR actualColor);
+    bool makeMove(std::pair<std::pair<int, int>, std::pair<int, int>> move, COLOR actualColor);
+
 public:
     /**
      * game Starter;

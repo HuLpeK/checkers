@@ -12,6 +12,7 @@
  * Size of the board
  */
 #define SIZE 8
+
 //! Checkers Board
 class Board {
     Piece Square[SIZE][SIZE];
@@ -23,7 +24,8 @@ public:
      * @return Reference to Piece of Square[x][y];
      * @return if asking out of bounds return Piece.
      */
-    Piece& at(int x, int y);
+    Piece &at(int x, int y);
+
     /**
      * Getter for Square Table
      * @param x first axis
@@ -32,17 +34,19 @@ public:
      * @return if asking out of bounds return Piece.
      */
     Piece at(int x, int y) const;
+
     /**
      * Constructor for Board
      */
     Board();
+
     /**
      * Method that shows current state of Board.
      * @param out - stream reference to put Board
      * @param Bo - const reference to Board     *
      * @return stream with Display of Square
      */
-    friend std::ostream& operator<<(std::ostream& out, const Board& Bo);
+    friend std::ostream &operator<<(std::ostream &out, const Board &Bo);
 
 };
 
