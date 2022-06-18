@@ -3,9 +3,9 @@ project(checkers)
 
 set(CMAKE_CXX_STANDARD 20)
 add_compile_options(-Wall -Wextra -pedantic -Werror)
-add_executable(checkers main.cpp src/pieces.cpp src/pieces.hpp src/board.cpp src/board.hpp src/game.cpp src/game.hpp src/Participant.cpp src/Participant.hpp src/logic.cpp src/logic.hpp src/clear.cpp src/clear.h)
+add_executable(checkers main.cpp src/pieces.cpp src/pieces.hpp src/board.cpp src/board.hpp src/game.cpp src/game.hpp src/Participant.cpp src/Participant.hpp src/logic.cpp src/logic.hpp utils/clear.cpp utils/clear.h)
 
-add_library(implement src/pieces.cpp src/pieces.hpp src/board.cpp src/board.hpp src/game.cpp src/game.hpp src/Participant.cpp src/Participant.hpp src/logic.cpp src/logic.hpp src/clear.cpp src/clear.h)
+add_library(implement src/pieces.cpp src/pieces.hpp src/board.cpp src/board.hpp src/game.cpp src/game.hpp src/Participant.cpp src/Participant.hpp src/logic.cpp src/logic.hpp utils/clear.cpp utils/clear.h)
 #Doxy Gen
 option(BUILD_DOC "Build documentation" ON)
 

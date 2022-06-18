@@ -10,18 +10,19 @@
 
 #include <string>
 #include <vector>
+
 /// enum for having own Color types
 enum COLOR {
-        NONE, ///< Blank
-        WHITE, ///< White Piece
-        BLACK ///< Black Piece
+    NONE, ///< Blank
+    WHITE, ///< White Piece
+    BLACK ///< Black Piece
 
 };
 
 //! Class that provides template for creating Man and King.
 class Piece {
 protected:
-    //! Name of Piece @defult - "Square"
+    //! Name of Piecee - "Square"
     std::string Name;
     /**
      * Shown Icon of Piece.
@@ -29,10 +30,10 @@ protected:
     std::string Icon;
     //! Vector of avalible Piece moves
     /*! Implemented as std::vector of std::pairs of X,Y coordinates.*/
-    std::vector<std::pair<int,int>> Moves;
+    std::vector<std::pair<int, int>> Moves;
     //! Vector of avalible Piece attacks
     /*! Implemented as std::vector of std::pairs of X,Y coordinates.*/
-    std::vector<std::pair<int,int>> attacks;
+    std::vector<std::pair<int, int>> attacks;
     //! Color of Piece
     COLOR Color;
 public:
@@ -41,6 +42,7 @@ public:
      * @return Name
      */
     std::string getName() const;
+
     /**
      * Getter Method
      * @return Color of Piece
@@ -52,11 +54,13 @@ public:
      * @return std::vector Moves;
      */
     std::vector<std::pair<int, int>> getMoves() const;
+
     /**
      * Getter Method
      * @return std::vector Attacks;
      */
     std::vector<std::pair<int, int>> getAttacks() const;
+
     /**
      * Getter method
      * @return Icon of Piece
@@ -67,6 +71,7 @@ public:
      * Constructor that sets Color to NONE.
      */
     Piece();
+
     /**
      * Constructor
      * @param x Color to be set
@@ -75,8 +80,7 @@ public:
 };
 
 //! Class of Basic Piece
-class Man : public Piece
-{
+class Man : public Piece {
 public:
     /**
      * Constructor that sets:\n
@@ -84,12 +88,11 @@ public:
      * Moves - {1,-1},{1,1}
      * @param x Color to be set of Man
      */
-     Man(COLOR x);
+    Man(COLOR x);
 };
 
 //! Class of Best Piece in checkers
-class King : public Piece
-{
+class King : public Piece {
 public:
     /**
      * Constructor that sets\n
@@ -99,4 +102,5 @@ public:
      */
     explicit King(COLOR x);
 };
+
 #endif //CHECKERS_PIECES_HPP
