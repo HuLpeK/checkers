@@ -68,4 +68,3 @@ TEST_F(BoardTest, Check_If_1_2_Reffer_To_B_3)
         for(int j = 0; j < SIZE; j++)
             EXPECT_EQ(expectedBoard[7-j][i], bo.at(i,j));
 }
-//todo can we make better tests here?
