@@ -1,13 +1,25 @@
-
+/// @file Participant_test.cc
+/// @author Hubert Kulpaczyński
 #include <gtest/gtest.h>
 #include "gmock/gmock.h"
 #include "../src/Participant.hpp"
 
-class ParticipantTest : public ::testing::Test {
+class PlayerTest : public ::testing::Test {
 protected:
-    ParticipantTest() = default;
+    PlayerTest() = default;
 
-    ~ParticipantTest() override = default;
+    ~PlayerTest() override = default;
+
+    void SetUp() override {};
+
+    void TearDown() override {};
+};
+
+class BotTest : public ::testing::Test {
+protected:
+    BotTest() = default;
+
+    ~BotTest() override = default;
 
     void SetUp() override {};
 
@@ -15,8 +27,8 @@ protected:
 };
 
 void clearBoard(Board& bo);
-
-TEST_F(ParticipantTest, Test_Player_ToUpperCaseTest_Should_Return_Char_In_UpperIndex)
+/// @test Checks if UpperCase converstion works.\n Should return char in UpperCase.
+TEST_F(PlayerTest, Test_Player_ToUpperCaseTest_Should_Return_Char_In_UpperIndex)
 {
     std::vector<char> expected;
     expected.reserve(('Z'-'A')+('z'-'a'));
@@ -39,8 +51,8 @@ TEST_F(ParticipantTest, Test_Player_ToUpperCaseTest_Should_Return_Char_In_UpperI
         EXPECT_EQ(ans[i],expected[i]);
 }
 
-
-TEST_F(ParticipantTest, Bot_Test_Check_If_Performs_Man_White_Not_Bicie_Move)
+/// @test Check if move is possible on blank Board for BLACK Man.
+TEST_F(BotTest, Bot_Test_Check_If_Performs_Man_White_Not_Bicie_Move)
 {
     Board bo;
     Bot Pl(WHITE,bo);
@@ -51,8 +63,8 @@ TEST_F(ParticipantTest, Bot_Test_Check_If_Performs_Man_White_Not_Bicie_Move)
     const auto mv = Pl.makeMove();
     EXPECT_TRUE((mv.second == std::pair<int,int>{0,3} or mv.second == std::pair<int,int>{3,3}) and (mv.first == std::pair<int,int>{1,2}));
 }
-
-TEST_F(ParticipantTest, Bot_Test_Check_If_Performs_Man_Black_Not_Bicie_Move)
+/// @test Check if move is possible on blank Board for WHITE Man.
+TEST_F(BotTest, Bot_Test_Check_If_Performs_Man_Black_Not_Bicie_Move)
 {
     Board bo;
     Bot Pl(BLACK,bo);
@@ -64,7 +76,8 @@ TEST_F(ParticipantTest, Bot_Test_Check_If_Performs_Man_Black_Not_Bicie_Move)
     EXPECT_TRUE((mv.second == std::pair<int,int>{0,1} or mv.second == std::pair{3,1}) and (mv.first == std::pair{1,2}));
 }
 
-TEST_F(ParticipantTest, Bot_Test_Check_if_Performs_King_White_Not_Bicie_Move)
+/// @test Check if move is possible on blank Board for WHITE King.
+TEST_F(BotTest, Bot_Test_Check_if_Performs_King_White_Not_Bicie_Move)
 {
     Board bo;
     clearBoard(bo);
@@ -81,7 +94,8 @@ TEST_F(ParticipantTest, Bot_Test_Check_if_Performs_King_White_Not_Bicie_Move)
     EXPECT_TRUE((flag and mv.first == std::pair{2,3}));
 }
 
-TEST_F(ParticipantTest, Bot_Test_Check_if_Performs_King_BLACK_Not_Bicie_Move)
+/// @test Check if move is possible on blank Board for BLACK King.
+TEST_F(BotTest, Bot_Test_Check_if_Performs_King_BLACK_Not_Bicie_Move)
 {
     Board bo;
     clearBoard(bo);
@@ -98,7 +112,8 @@ TEST_F(ParticipantTest, Bot_Test_Check_if_Performs_King_BLACK_Not_Bicie_Move)
     EXPECT_TRUE((flag and mv.first == std::pair{4,5}));
 }
 
-TEST_F(ParticipantTest, Bot_Test_Check_If_Furthes_Is_Moved_For_White)
+/// @test Check if the closest to end Piece is moved for WHITE site.
+TEST_F(BotTest, Bot_Test_Check_If_Furthes_Is_Moved_For_White)
 {
     Board bo;
     clearBoard(bo);
@@ -116,7 +131,8 @@ TEST_F(ParticipantTest, Bot_Test_Check_If_Furthes_Is_Moved_For_White)
     EXPECT_TRUE((from == std::pair{1,6} and (to == std::pair{0,7} or to == std::pair{2,6})));
 }
 
-TEST_F(ParticipantTest, Bot_Test_Check_If_Furthes_Is_Moved_For_Black)
+/// @test Check if the closest to end Piece is moved for BLACK site.
+TEST_F(BotTest, Bot_Test_Check_If_Furthes_Is_Moved_For_Black)
 {
     Board bo;
     clearBoard(bo);
@@ -134,7 +150,8 @@ TEST_F(ParticipantTest, Bot_Test_Check_If_Furthes_Is_Moved_For_Black)
     EXPECT_TRUE((from == std::pair{2,3} and (to == std::pair{1,2} or to == std::pair{3,2})));
 }
 
-TEST_F(ParticipantTest, Bot_Test_If_Furthest_Move_Is_Not_Legal_For_Black)
+/// @test Check - if the closest to end Piece is illegal for BLACK
+TEST_F(BotTest, Bot_Test_If_Furthest_Move_Is_Not_Legal_For_Black)
 {
     Board bo;
     clearBoard(bo);
@@ -151,7 +168,8 @@ TEST_F(ParticipantTest, Bot_Test_If_Furthest_Move_Is_Not_Legal_For_Black)
     EXPECT_TRUE((from == std::pair{4,4}) and (to == std::pair{3,3} or to == std::pair{5,3}));
 }
 
-TEST_F(ParticipantTest, Bot_Test_If_Furthest_Move_Is_Not_Legal_For_White)
+/// @test Check - if the closest to end Piece is illegal for WHITE.
+TEST_F(BotTest, Bot_Test_If_Furthest_Move_Is_Not_Legal_For_White)
 {
     Board bo;
     clearBoard(bo);
@@ -168,7 +186,8 @@ TEST_F(ParticipantTest, Bot_Test_If_Furthest_Move_Is_Not_Legal_For_White)
     EXPECT_TRUE((from == std::pair{1,0} and (to == std::pair{0,1} or to == std::pair{2,1})));
 }
 
-TEST_F(ParticipantTest, Bot_Test_If_Bicie_Is_Working_For_White)
+/// @test Check - if the bicie is made working for WHITE.
+TEST_F(BotTest, Bot_Test_If_Bicie_Is_Working_For_White)
 {
     Board bo;
     clearBoard(bo);
@@ -184,7 +203,8 @@ TEST_F(ParticipantTest, Bot_Test_If_Bicie_Is_Working_For_White)
     EXPECT_TRUE((from == std::pair{1,2} and to == std::pair{3,4}));
 }
 
-TEST_F(ParticipantTest, Bot_Test_If_Bicie_Is_Working_For_Black)
+/// @test Check - if the bicie is made working for BLACK.
+TEST_F(BotTest, Bot_Test_If_Bicie_Is_Working_For_Black)
 {
     Board bo;
     clearBoard(bo);

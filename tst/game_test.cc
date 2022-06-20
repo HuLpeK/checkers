@@ -1,4 +1,4 @@
-
+/// @file game_test.cc
 #include <gtest/gtest.h>
 #include "gmock/gmock.h"
 #include "../src/game.hpp"
@@ -19,6 +19,7 @@ void clearBo(Board& bo)
         for(int j = 0; j < SIZE; j++)
             bo.at(i,j) = Piece();
 }
+/// @test Test taken from real situation
 TEST(GameTest,Test_1)
 {
     Board bo;

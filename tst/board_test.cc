@@ -1,7 +1,4 @@
-/***
- * \file board_test.cc
- * @author Hubert Kulpaczyński
- */
+/// \file board_test.cc
 #include <gtest/gtest.h>
 #include "gmock/gmock.h"
 #include "../src/board.hpp"
@@ -13,6 +10,11 @@ protected:
 
     void SetUp() override {};
     void TearDown() override {};
+};
+
+class BoardMock{
+public:
+    MOCK_METHOD(Piece, at,(int x,int y));
 };
 
 bool operator==(const Piece& a, const Piece& b)
@@ -68,4 +70,13 @@ TEST_F(BoardTest, Check_If_1_2_Reffer_To_B_3)
         for(int j = 0; j < SIZE; j++)
             EXPECT_EQ(expectedBoard[7-j][i], bo.at(i,j));
 }
-//todo can we make better tests here?
+
+TEST_F(BoardTest, Check_Board_Mock)
+{
+    testing::NiceMock<BoardMock> x;
+    ON_CALL(x, at(testing::_,testing::_)).WillByDefault(testing::Return(King(BLACK)));
+    ON_CALL(x, at(1,testing::_)).WillByDefault(testing::Return(Man(WHITE)));
+    //EXPECT_CALL(board, isFree(move.first,move.second)).WillOnce(Return(true));
+
+    std::cout << x.at(1,0).getIcon() << " ";
+}

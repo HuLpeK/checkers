@@ -1,4 +1,4 @@
-
+/// @file pieces_test.cc
 #include <gtest/gtest.h>
 #include "gmock/gmock.h"
 #include "../src/pieces.hpp"
@@ -20,19 +20,14 @@ void clearBoard(Board& bo)
             bo.at(i,j) = Piece();
 }
 
-/**
- * Test tak checks default Piece constructor.
- */
+/// @test Checks basic Constructor of Piece.
 TEST_F(PiecesTest, Check_Basic_Constructor_Should_Return_Square)
 {
     Piece x;
     EXPECT_TRUE(x.getColor() == NONE and x.getName() == "Square");
 }
 
-/**
- * Test that checks Mans constructors.
- * @returns Returns if color and name are set to correct ones.
- */
+/// @test Check basic constructors of Man.
 TEST_F(PiecesTest, Check_Man_Black_and_White_Constructor_Should_Return_Man)
 {
     Man x{WHITE};
@@ -41,10 +36,7 @@ TEST_F(PiecesTest, Check_Man_Black_and_White_Constructor_Should_Return_Man)
     EXPECT_TRUE(y.getColor() == BLACK and y.getName() == "Man");
 }
 
-/**
- * Test that checks King's constructors.
- * @return Returns if color and name are set to correct ones.
- */
+/// @test Checks basic constructors of King
 TEST_F(PiecesTest, Check_King_Constructor_Should_Return_King)
 {
     King x{WHITE};
@@ -53,10 +45,7 @@ TEST_F(PiecesTest, Check_King_Constructor_Should_Return_King)
     EXPECT_TRUE(y.getColor() == BLACK and y.getName() == "King");
 }
 
-/**
- * Test that checks if White Man moves works as intended.
- * @return Left and Right 'corner' of piece.
- */
+/// @test Check Moves of White Man.\n Should return up left and up right position.
 TEST_F(PiecesTest, Check_White_Man_Moves_Should_Return_Left_And_Right_Corner)
 {
     Board expected;
@@ -78,10 +67,7 @@ TEST_F(PiecesTest, Check_White_Man_Moves_Should_Return_Left_And_Right_Corner)
 
 }
 
-/**
- * Test that checks if Black Man moves works as intended.
- * @return Left and Right 'corner' of piece.
- */
+/// @test Check moves of Black Man.\n Should return down left and down right position.
 TEST_F(PiecesTest, Check_Black_Man_Moves_Should_Return_Left_And_Right_Corner)
 {
     Board expected;
@@ -103,10 +89,7 @@ TEST_F(PiecesTest, Check_Black_Man_Moves_Should_Return_Left_And_Right_Corner)
 
 }
 
-/**
- * Check if black king moves works as intended.
- * @return All 4 diagonals from Piece.
- */
+/// @test Checks Black King Moves.\n Should return all 4 diagonals.
 TEST_F(PiecesTest, Check_Black_King_Moves_Should_Return_Left_And_Right_Diagonal)
 {
     King Tmp{BLACK};
@@ -130,10 +113,7 @@ TEST_F(PiecesTest, Check_Black_King_Moves_Should_Return_Left_And_Right_Diagonal)
             EXPECT_EQ(tab[i][j], expectedTab[i][j]);
 }
 
-/**
- * Check if white king moves works as intended.
- * @return All 4 diagonals from Piece.
- */
+/// @test Checks White King Moves.\n Should return all 4 diagonals.
 TEST_F(PiecesTest, Check_White_King_Moves_Should_Return_Left_And_Right_Diagonal)
 {
     King Tmp{WHITE};
