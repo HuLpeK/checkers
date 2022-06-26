@@ -13,7 +13,7 @@
 class Game {
 protected:
     Board board; ///< Board
-    Player white; ///< White player.
+    Bot white; ///< White player.
     Bot black; ///< Black player.
 
     /**

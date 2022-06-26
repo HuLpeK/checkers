@@ -67,7 +67,7 @@ void Game::Start() {
             actualColor = WHITE;
     }
     std::cout << board << '\n';
-    if (Logic::win(board) == WHITE)
+    if (Logic::win(board) == BLACK)
         std::cout << "Wygrał Czarny!\n\n";
     else
         std::cout << "Wygrał Biały!\n\n";

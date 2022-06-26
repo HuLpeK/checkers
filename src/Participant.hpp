@@ -21,14 +21,14 @@ protected:
     /**
      * Reference to Board that game is taking place.
      */
-    const Board &bo;
+    const Board &bo {};
 public:
     /**
      * Constructor of Participant
      * @param x - Color of Participant.
      * @param bo - Board that game is taking place on.
      */
-    explicit Participant(COLOR x, Board &bo);
+    Participant(COLOR x, Board &bo);
 
     /**
      * Getter method.
@@ -42,6 +42,15 @@ public:
     * @return Pair of defined move {X,Y} -> {X,Y}.
     */
     std::pair<std::pair<int, int>, std::pair<int, int>> makeMove();
+
+    /**
+   * Method that defines Piece move\n
+   * @invariant Bounds and legality of move is not checked here.
+   * @param oldMove - Old move from which you start new one.
+   * @return Pair of defined move {X,Y} -> {X,Y}.
+   */
+    std::pair<std::pair<int, int>, std::pair<int, int>>
+    makeMove(std::pair<std::pair<int, int>, std::pair<int, int>> oldMove);
 };
 
 //! Player (User)
@@ -91,7 +100,7 @@ protected:
      * @invariant Bicie is always possible.
      * @return pair {x,y} where to move Piece from start ( start -> {x,y} ).
      */
-    std::pair<int, int> makeBicie(const std::pair<int, int> start);
+    std::pair<int, int> makeBicie(std::pair<int, int> oldMove);
 
 
     /**     *
