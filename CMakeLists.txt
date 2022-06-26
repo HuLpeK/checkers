@@ -2,7 +2,7 @@ cmake_minimum_required(VERSION 3.22)
 project(checkers)
 
 set(CMAKE_CXX_STANDARD 20)
-add_compile_options(-Wall -Wextra -pedantic -Werror)
+add_compile_options(-Wall -Wextra -pedantic -Werror -fno-inline -Wunused)
 add_executable(checkers main.cpp src/pieces.cpp src/pieces.hpp src/board.cpp src/board.hpp src/game.cpp src/game.hpp src/Participant.cpp src/Participant.hpp src/logic.cpp src/logic.hpp utils/clear.cpp utils/clear.h)
 
 add_library(implement src/pieces.cpp src/pieces.hpp src/board.cpp src/board.hpp src/game.cpp src/game.hpp src/Participant.cpp src/Participant.hpp src/logic.cpp src/logic.hpp utils/clear.cpp utils/clear.h)

@@ -19,8 +19,8 @@ class Board {
 public:
     /**
      * Getter for Square Table
-     * @param x first axis
-     * @param y second axis
+     * @param x Row Index {A,B...H}.
+     * @param y Column Index {1,2,3...8}.
      * @return Reference to Piece of Square[x][y];
      * @return if asking out of bounds return Piece.
      */
@@ -28,8 +28,8 @@ public:
 
     /**
      * Getter for Square Table
-     * @param x first axis
-     * @param y second axis
+     * @param x Row Index {A,B...H}.
+     * @param y Column Index {1,2,3...8}.
      * @return Reference to Piece of Square[x][y].
      * @return if asking out of bounds return Piece.
      */
@@ -42,9 +42,9 @@ public:
 
     /**
      * Method that shows current state of Board.
-     * @param out - stream reference to put Board
-     * @param Bo - const reference to Board     *
-     * @return stream with Display of Square
+     * @param out - stream reference to put Board.
+     * @param Bo - const reference to Board.
+     * @return stream with Display of Square.
      */
     friend std::ostream &operator<<(std::ostream &out, const Board &Bo);
 
