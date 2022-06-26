@@ -12,15 +12,11 @@ protected:
     void TearDown() override {};
 };
 
-class BoardMock{
-public:
-    MOCK_METHOD(Piece, at,(int x,int y));
-};
-
 bool operator==(const Piece& a, const Piece& b)
 {
     return a.getName() == b.getName() and a.getColor() == b.getColor();
 }
+
 Board clearBoard()
 {
     Board tmp;
@@ -29,6 +25,7 @@ Board clearBoard()
             tmp.at(i,j) = Piece();
     return tmp;
 }
+/// @test Check of Board constructor.
 TEST_F(BoardTest, Check_If_Board_Is_Correctly_Build) {
     Board Tmp;
     Piece expectedBoard[8][8];
@@ -58,7 +55,7 @@ TEST_F(BoardTest, Check_If_Board_Is_Correctly_Build) {
         for (int j = 0; j < SIZE; j++)
             EXPECT_EQ(expectedBoard[i][j], Tmp.at(i, j));
 }
-
+/// @test Check Board.at() for refereint {1,2} -> {B,3}.
 TEST_F(BoardTest, Check_If_1_2_Reffer_To_B_3)
 {
     Board bo = clearBoard();
@@ -69,14 +66,4 @@ TEST_F(BoardTest, Check_If_1_2_Reffer_To_B_3)
     for(int i = 0; i < SIZE; i++)
         for(int j = 0; j < SIZE; j++)
             EXPECT_EQ(expectedBoard[7-j][i], bo.at(i,j));
-}
-
-TEST_F(BoardTest, Check_Board_Mock)
-{
-    testing::NiceMock<BoardMock> x;
-    ON_CALL(x, at(testing::_,testing::_)).WillByDefault(testing::Return(King(BLACK)));
-    ON_CALL(x, at(1,testing::_)).WillByDefault(testing::Return(Man(WHITE)));
-    //EXPECT_CALL(board, isFree(move.first,move.second)).WillOnce(Return(true));
-
-    std::cout << x.at(1,0).getIcon() << " ";
 }
