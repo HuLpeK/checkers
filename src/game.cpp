@@ -93,8 +93,6 @@ void Game::Start() {
         std::cout << "Wygrał Biały!\n\n";
 }
 
-//Game::Game() : board(), white(WHITE, board), black(BLACK, board) {}
-
 bool Game::makeMove(std::pair<std::pair<int, int>, std::pair<int, int>> move, COLOR actualColor) {
     auto [from, to] = move;
     board.at(from.first, from.second) = Piece();
