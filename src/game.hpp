@@ -13,8 +13,8 @@
 class Game {
 protected:
     Board board; ///< Board
-    Bot white; ///< White player.
-    Bot black; ///< Black player.
+    std::unique_ptr<Participant> white; ///< White player.
+    std::unique_ptr<Participant> black; ///< Black player.
 
     /**
      * Perform actual move.
@@ -31,7 +31,13 @@ public:
      */
     void Start();
 
-    Game();
+    Game()=delete;
+    /**
+     * Construcot of game.
+     * @param wh - who do you want to take Whites PLace? "Bot" or a "Player".
+     * @param bl - who do you want to take Black PLace? "Bot" or a "Player".
+     */
+    Game(const std::string& wh,  const std::string& bl);
 };
 
 

@@ -29,7 +29,7 @@ public:
      * @param bo - Board that game is taking place on.
      */
     Participant(COLOR x, Board &bo);
-
+    virtual ~Participant()=default;
     /**
      * Getter method.
      * @return Players color.
@@ -41,7 +41,7 @@ public:
     * @invariant Bounds and legality of move is not checked here.
     * @return Pair of defined move {X,Y} -> {X,Y}.
     */
-    std::pair<std::pair<int, int>, std::pair<int, int>> makeMove();
+    virtual std::pair<std::pair<int, int>, std::pair<int, int>> makeMove()=0;
 
     /**
    * Method that defines Piece move\n
@@ -49,8 +49,8 @@ public:
    * @param oldMove - Old move from which you start new one.
    * @return Pair of defined move {X,Y} -> {X,Y}.
    */
-    std::pair<std::pair<int, int>, std::pair<int, int>>
-    makeMove(std::pair<std::pair<int, int>, std::pair<int, int>> oldMove);
+    virtual std::pair<std::pair<int, int>, std::pair<int, int>>
+    makeMove(std::pair<std::pair<int, int>, std::pair<int, int>> oldMove)=0;
 };
 
 //! Player (User)
@@ -69,7 +69,7 @@ public:
     * @invariant Bounds and legality of move is not checked here.
     * @return Pair of defined move {X,Y} -> {X,Y}.
     */
-    std::pair<std::pair<int, int>, std::pair<int, int>> makeMove();
+    std::pair<std::pair<int, int>, std::pair<int, int>> makeMove() final;
 
     /**
     * Method that defines Piece move\n
@@ -78,7 +78,7 @@ public:
     * @return Pair of defined move {X,Y} -> {X,Y}.
     */
     std::pair<std::pair<int, int>, std::pair<int, int>>
-    makeMove(std::pair<std::pair<int, int>, std::pair<int, int>> oldMove);
+    makeMove(std::pair<std::pair<int, int>, std::pair<int, int>> oldMove) final;
 
     /**
      * Constructor for Player using Participant constructor.
@@ -123,7 +123,7 @@ public:
     * @invariant Bounds and legality of move is not checked here.
     * @return Pair of defined move {X,Y} -> {X,Y}.
     */
-    std::pair<std::pair<int, int>, std::pair<int, int>> makeMove();
+    std::pair<std::pair<int, int>, std::pair<int, int>> makeMove() final ;
 
     /**
     * Method that defines Piece move\n
@@ -132,7 +132,7 @@ public:
     * @return Pair of defined move {X,Y} -> {X,Y}.
     */
     std::pair<std::pair<int, int>, std::pair<int, int>>
-    makeMove(std::pair<std::pair<int, int>, std::pair<int, int>> oldMove);
+    makeMove(std::pair<std::pair<int, int>, std::pair<int, int>> oldMove) final;
 
 };
 
