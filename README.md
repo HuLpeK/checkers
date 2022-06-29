@@ -12,4 +12,5 @@ player will be **bot** and black will be **player**.
 s
 * Program tested on macOS using Apple clang 13.1.6 compiler.
 * Program tested on Linux using g++.
+
 * Program tested on Windows using MinGW.
