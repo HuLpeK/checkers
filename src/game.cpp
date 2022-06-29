@@ -6,29 +6,9 @@
 #include "logic.hpp"
 #include "../utils/clear.h"
 
-//static inline void wypiszMove(const std::pair<std::pair<int,int>,std::pair<int,int>>& mv)
-//{
-//    auto [fromX, fromY] = mv.first;
-//    auto [toX, toY] = mv.second;
-//
-//    const char from = fromX + 'A';
-//    const char to =  toX + 'A';
-//
-//    std::ofstream fin("Ruchy.txt",std::ios_base::app);
-////    fin.open("Ruchy.txt");
-//    fromY++;
-//    toY++;
-//    fin << from << fromY << " " << to << toY << "\n";
-//    std::cout << from << fromY << " " << to << toY << "\n";
-////    fin.close();
-//}
-
-
 void Game::Start() {
     COLOR actualColor = WHITE;
-//    int ilosc_tur {};
     while (!Logic::win(board)) {
-//        ilosc_tur++;
         clear_screen();
         std::cout << board;
 
@@ -92,8 +72,6 @@ void Game::Start() {
     else
         std::cout << "Wygrał Biały!\n\n";
 }
-
-//Game::Game() : board(), white(WHITE, board), black(BLACK, board) {}
 
 bool Game::makeMove(std::pair<std::pair<int, int>, std::pair<int, int>> move, COLOR actualColor) {
     auto [from, to] = move;
