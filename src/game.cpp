@@ -6,25 +6,45 @@
 #include "logic.hpp"
 #include "../utils/clear.h"
 
+//static inline void wypiszMove(const std::pair<std::pair<int,int>,std::pair<int,int>>& mv)
+//{
+//    auto [fromX, fromY] = mv.first;
+//    auto [toX, toY] = mv.second;
+//
+//    const char from = fromX + 'A';
+//    const char to =  toX + 'A';
+//
+//    std::ofstream fin("Ruchy.txt",std::ios_base::app);
+////    fin.open("Ruchy.txt");
+//    fromY++;
+//    toY++;
+//    fin << from << fromY << " " << to << toY << "\n";
+//    std::cout << from << fromY << " " << to << toY << "\n";
+////    fin.close();
+//}
+
+
 void Game::Start() {
     COLOR actualColor = WHITE;
+//    int ilosc_tur {};
     while (!Logic::win(board)) {
+//        ilosc_tur++;
         clear_screen();
         std::cout << board;
 
         std::pair<std::pair<int, int>, std::pair<int, int>> mv{};
 
         if (actualColor == WHITE)
-            mv = white.makeMove();
+            mv = white->makeMove();
         else
-            mv = black.makeMove();
+            mv = black->makeMove();
 
         while (!Logic::legalMove(board, mv, actualColor)) {
             std::cout << "BLAD!\n";
             if (actualColor == WHITE)
-                mv = white.makeMove();
+                mv = white->makeMove();
             else
-                mv = black.makeMove();
+                mv = black->makeMove();
         }
         const auto [fromX, fromY] = Logic::possibleBicie(board, actualColor);
 
@@ -39,21 +59,21 @@ void Game::Start() {
                 if (actualColor == WHITE) {
                     std::pair<std::pair<int, int>, std::pair<int, int>> tmp{{-1, -1},
                                                                             {-1, -1}};
-                    tmp = white.makeMove(mv);
+                    tmp = white->makeMove(mv);
 
                     while (!Logic::legalMove(board, tmp, WHITE)) {
                         std::cout << "BLAD2!\n";
-                        tmp = white.makeMove(mv);
+                        tmp = white->makeMove(mv);
                     }
                     mv = tmp;
                 }
                 if (actualColor == BLACK) {
                     std::pair<std::pair<int, int>, std::pair<int, int>> tmp{{-1, -1},
                                                                             {-1, -1}};
-                    tmp = white.makeMove(mv);
+                    tmp = white->makeMove(mv);
                     while (!Logic::legalMove(board, tmp, BLACK)) {
                         std::cout << "BLAD2!\n";
-                        tmp = white.makeMove(mv);
+                        tmp = white->makeMove(mv);
                     }
                     mv = tmp;
                 }
@@ -67,13 +87,13 @@ void Game::Start() {
             actualColor = WHITE;
     }
     std::cout << board << '\n';
-    if (Logic::win(board) == WHITE)
+    if (Logic::win(board) == BLACK)
         std::cout << "Wygrał Czarny!\n\n";
     else
         std::cout << "Wygrał Biały!\n\n";
 }
 
-Game::Game() : board(), white(WHITE, board), black(BLACK, board) {}
+//Game::Game() : board(), white(WHITE, board), black(BLACK, board) {}
 
 bool Game::makeMove(std::pair<std::pair<int, int>, std::pair<int, int>> move, COLOR actualColor) {
     auto [from, to] = move;
@@ -108,4 +128,16 @@ bool Game::makeMove(std::pair<std::pair<int, int>, std::pair<int, int>> move, CO
     }
     return flag;
 
+}
+
+Game::Game(const std::string& wh, const std::string& bl) {
+    if(wh == "BOT")
+        white = std::make_unique<Bot>(WHITE,board);
+    if(wh == "PLAYER")
+        white = std::make_unique<Player>(WHITE,board);
+
+    if(bl == "BOT")
+        black = std::make_unique<Bot>(BLACK,board);
+    if(bl == "PLAYER")
+        black = std::make_unique<Player>(BLACK,board);
 }

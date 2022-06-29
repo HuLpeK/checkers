@@ -21,15 +21,15 @@ protected:
     /**
      * Reference to Board that game is taking place.
      */
-    const Board &bo;
+    const Board &bo {};
 public:
     /**
      * Constructor of Participant
      * @param x - Color of Participant.
      * @param bo - Board that game is taking place on.
      */
-    explicit Participant(COLOR x, Board &bo);
-
+    Participant(COLOR x, Board &bo);
+    virtual ~Participant()=default;
     /**
      * Getter method.
      * @return Players color.
@@ -41,7 +41,16 @@ public:
     * @invariant Bounds and legality of move is not checked here.
     * @return Pair of defined move {X,Y} -> {X,Y}.
     */
-    std::pair<std::pair<int, int>, std::pair<int, int>> makeMove();
+    virtual std::pair<std::pair<int, int>, std::pair<int, int>> makeMove()=0;
+
+    /**
+   * Method that defines Piece move\n
+   * @invariant Bounds and legality of move is not checked here.
+   * @param oldMove - Old move from which you start new one.
+   * @return Pair of defined move {X,Y} -> {X,Y}.
+   */
+    virtual std::pair<std::pair<int, int>, std::pair<int, int>>
+    makeMove(std::pair<std::pair<int, int>, std::pair<int, int>> oldMove)=0;
 };
 
 //! Player (User)
@@ -60,7 +69,7 @@ public:
     * @invariant Bounds and legality of move is not checked here.
     * @return Pair of defined move {X,Y} -> {X,Y}.
     */
-    std::pair<std::pair<int, int>, std::pair<int, int>> makeMove();
+    std::pair<std::pair<int, int>, std::pair<int, int>> makeMove() final;
 
     /**
     * Method that defines Piece move\n
@@ -69,7 +78,7 @@ public:
     * @return Pair of defined move {X,Y} -> {X,Y}.
     */
     std::pair<std::pair<int, int>, std::pair<int, int>>
-    makeMove(std::pair<std::pair<int, int>, std::pair<int, int>> oldMove);
+    makeMove(std::pair<std::pair<int, int>, std::pair<int, int>> oldMove) final;
 
     /**
      * Constructor for Player using Participant constructor.
@@ -80,9 +89,7 @@ public:
 
 };
 
-/**
- * Simple 'AI' to play with.
- */
+//!Simple 'AI' to play with.
 class Bot : public Participant {
 protected:
     /**
@@ -91,7 +98,7 @@ protected:
      * @invariant Bicie is always possible.
      * @return pair {x,y} where to move Piece from start ( start -> {x,y} ).
      */
-    std::pair<int, int> makeBicie(const std::pair<int, int> start);
+    std::pair<int, int> makeBicie(std::pair<int, int> oldMove);
 
 
     /**     *
@@ -114,7 +121,7 @@ public:
     * @invariant Bounds and legality of move is not checked here.
     * @return Pair of defined move {X,Y} -> {X,Y}.
     */
-    std::pair<std::pair<int, int>, std::pair<int, int>> makeMove();
+    std::pair<std::pair<int, int>, std::pair<int, int>> makeMove() final ;
 
     /**
     * Method that defines Piece move\n
@@ -123,7 +130,7 @@ public:
     * @return Pair of defined move {X,Y} -> {X,Y}.
     */
     std::pair<std::pair<int, int>, std::pair<int, int>>
-    makeMove(std::pair<std::pair<int, int>, std::pair<int, int>> oldMove);
+    makeMove(std::pair<std::pair<int, int>, std::pair<int, int>> oldMove) final;
 
 };
 

@@ -78,12 +78,12 @@ std::pair<std::pair<int, int>, std::pair<int, int>> Bot::makeMove() {
                         {mvX + x, mvY + y}};
         }
 
-    return std::pair<std::pair<int, int>, std::pair<int, int>>();
+    return {};
 }
 
-std::pair<int, int> Bot::makeBicie(const std::pair<int, int> start) {
+std::pair<int, int> Bot::makeBicie(const std::pair<int, int> oldMove) {
     COLOR oppositeColor = (playerColor == BLACK ? WHITE : BLACK);
-    const auto &[startX, startY] = start;
+    const auto &[startX, startY] = oldMove;
     for (const auto &[mvX, mvY]: bo.at(startX, startY).getAttacks()) {
         const auto &[toX, toY] = std::pair<int, int>{mvX + startX, mvY + startY};
         if (bo.at(toX, toY).getColor() == oppositeColor) {
@@ -92,7 +92,7 @@ std::pair<int, int> Bot::makeBicie(const std::pair<int, int> start) {
                     (mvY > 0 ? 1 : -1)
             };
             if (bo.at(toX + dirX, toY + dirY).getColor() == NONE) {
-                std::pair<std::pair<int, int>, std::pair<int, int>> mv{start, {toX + dirX, toY + dirY}};
+                std::pair<std::pair<int, int>, std::pair<int, int>> mv{oldMove, {toX + dirX, toY + dirY}};
                 if (Logic::legalMove(bo, mv, playerColor))
                     return mv.second;
             }
@@ -118,4 +118,9 @@ std::vector<std::pair<int, int>> Bot::getPieces() {
         std::reverse(pos.begin(), pos.end());
 
     return pos;
+}
+
+std::pair<std::pair<int, int>, std::pair<int, int>>
+Bot::makeMove(std::pair<std::pair<int, int>, std::pair<int, int>> oldMove) {
+    return {oldMove.first, makeBicie(oldMove.first)};
 }
