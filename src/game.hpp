@@ -8,6 +8,7 @@
 
 #include "board.hpp"
 #include "Participant.hpp"
+#include <memory>
 
 //! Class that Handles whole game.
 class Game {

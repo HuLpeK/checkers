@@ -39,18 +39,6 @@ TEST_F(BoardTest, Check_If_Board_Is_Correctly_Build) {
             }
     }
 
-//    for (int i = 0; i < SIZE; i++) {
-//        for (int j = 0; j < 8; j++)
-//            std::cout << expectedBoard[i][j].getIcon();
-//        std::cout << "\n";
-//    }
-//    std::cout << "\n\n";
-//    for(int i = 0; i < SIZE; i++)
-//    {
-//        for(int j = 0; j < 8; j++)
-//            std::cout << Tmp.at(i,j).getIcon();
-//        std::cout << "\n";
-//    }
     for (int i = 0; i < SIZE; i++)
         for (int j = 0; j < SIZE; j++)
             EXPECT_EQ(expectedBoard[i][j], Tmp.at(i, j));
